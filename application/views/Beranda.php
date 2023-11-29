@@ -18,10 +18,10 @@
     <!-- place navbar here -->
     <nav class="navbar navbar-expand navbar-light bg-faded">
         <div class="container">
-            <a class="navbar-brand" href="#">Navbar</a>
+            <a class="navbar-brand" href="<?= base_url('Welcome'); ?>">Navbar</a>
             <ul class="navbar-nav me-auto mt-2 mt-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" href="#" aria-current="page">Active <span class="visually-hidden">(current)</span></a>
+                    <a class="nav-link active" href="<?= base_url('Beranda'); ?>" aria-current="page">Beranda <span class="visually-hidden">(current)</span></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Link</a>
@@ -41,9 +41,16 @@
         </div>
     </nav>
   </header>
-  <main>
+ 
+  <div class="card mt-5 m-5" style="width: 18rem;">
+  <img src="..." class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">Card title</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>
 
-  </main>
   <footer>
     <!-- place footer here -->
   </footer>
