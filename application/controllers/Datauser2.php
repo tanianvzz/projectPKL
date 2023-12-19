@@ -12,7 +12,7 @@ class Datauser2 extends CI_Controller {
 	public function index()
 	{
 		if (!$this->session->userdata('logged_in')) {
-			redirect('login');
+			redirect('auth');
 		}
 		$user_id = $this->session->userdata('user_id');
         $data['user'] = $this->user_model->get_user($user_id);
@@ -22,9 +22,9 @@ class Datauser2 extends CI_Controller {
 	}
 	public function Myprofile()
 	{
-		// if (!$this->session->userdata('logged_in')) {
-		// 	redirect('login');
-		// }
+		if (!$this->session->userdata('logged_in')) {
+			redirect('auth');
+		}
 		$user_id = $this->session->userdata('user_id');
         $data['user'] = $this->user_model->get_user($user_id);
 		$this->load->view('user2/header');
