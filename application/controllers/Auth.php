@@ -34,7 +34,7 @@ class Auth extends CI_Controller
                     $data =[
                         'email' => $user['email'],
                         'role' => $user['role_id'],
-                        //'is_login' => true
+                        // 'is_login' => true
                     ];
                     $this->session->set_userdata($data);
                     if($user){
@@ -50,9 +50,6 @@ class Auth extends CI_Controller
                               case 3:
                                 redirect('Beranda');
                                 break;
-                                default:
-                                redirect('auth');
-                                break;
                         }
                     }else{
 
@@ -63,7 +60,6 @@ class Auth extends CI_Controller
                 }
             }else{
             $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert"> email belum diaktif </div>');
-
             }
         }else{
             $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert"> email belum pernah terdaftar </div>');
