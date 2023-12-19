@@ -13,37 +13,33 @@
 
                             <div class="form-group">
                                 <input type="text" class="form-control form-control-user" id="name" name="name"
-                                    placeholder="Full Name"  value="<?= set_value('name'); ?>">
-                                    <?= form_error('name',' <small class="text-danger pl-3">', '</small>'); ?>
+                                    placeholder="Full Name" value="<?= set_value('name'); ?>">
+                                <?= form_error('name', ' <small class="text-danger pl-3">', '</small>'); ?>
                             </div>
                             <div class="form-group">
                                 <input type="text" class="form-control form-control-user" id="email" name="email"
-                                    placeholder="Email Address"  value="<?= set_value('email'); ?>" >
-                                    <?= form_error('email',' <small class="text-danger pl-3">', '</small>'); ?>
+                                    placeholder="Email Address" value="<?= set_value('email'); ?>">
+                                <?= form_error('email', ' <small class="text-danger pl-3">', '</small>'); ?>
                             </div>
                             <div class="form-group row">
                                 <div class="col-sm-6 mb-3 mb-sm-0">
                                     <input type="password" class="form-control form-control-user" id="password1"
                                         name="password1" placeholder="Password">
-                                        <?= form_error('password1',' <small class="text-danger pl-3">', '</small>'); ?>
+                                    <?= form_error('password1', ' <small class="text-danger pl-3">', '</small>'); ?>
                                 </div>
                                 <div class="col-sm-6">
                                     <input type="password" class="form-control form-control-user" id="password2"
                                         name="password2" placeholder="Repeat Password">
                                 </div>
                             </div>
-                            <div class="form-group">
-                                            <div class="custom-control custom-checkbox small">
-                                                <input type="checkbox" class="custom-control-input" id="customCheck" value="2">
-                                                <label class="custom-control-label" for="customCheck">Member</label>
-                                            </div>
-                                        </div>
-                           
-                                            <div class="custom-control custom-checkbox small">
-                                                <input type="checkbox" class="custom-control-input" id="customCheck1">
-                                                <label class="custom-control-label" for="customCheck1" value="3">Perusahaan</label>
-                                            </div>
-                                        </div>
+                            <div class="ml-2" role="group" aria-label="Basic radio toggle button group">
+                                <input type="radio" class="btn-check" name="role_id" id="btnradio1" autocomplete="off" value="2"
+                                    checked>
+                                <label class="btn btn-outline" for="btnradio1">Siswa</label><br>
+
+                                <input type="radio" class="btn-check" name="role_id" id="btnradio2" autocomplete="off" value="3">
+                                <label class="btn btn-outline" for="btnradio2">Perusahaan</label>
+                            </div>
                             <button type="submit" class="btn btn-primary btn-user btn-block">
                                 Register Account
                             </button>

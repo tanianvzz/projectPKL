@@ -91,9 +91,9 @@ class Auth extends CI_Controller
             'email' => htmlspecialchars($this->input->post('email',true)),
             'image' => 'default.png',
             'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
-            'role_id' => 2,
+            'role_id'=> $this->input->post('role_id', true),
             'is_active' => 1,
-            'date_created' => time()
+            'date_created' => time(),
            ];
            $this->db->insert('user', $data);
            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> congratulation! your acount has been created. Please Login</div>');
