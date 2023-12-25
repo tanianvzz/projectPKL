@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 if (!function_exists('fileuploadCI')) {
 	function fileuploadCI($imagename,$folder)
 	{
-		$image=$_FILES[$imagename]['name'];
+		$image=$_FILES[$imagename]['name']['file_nama_tempat'];
 		$CI =& get_instance();
 		$config=array(
 			'upload_path' => './uploads/',

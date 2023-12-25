@@ -39,7 +39,6 @@ class Auth extends CI_Controller
                     $this->session->set_userdata($data);
                     if($user){
                         $this->session->set_userdata($user);
-
                         switch($user['role_id']){
                           case 1:
                             redirect('Admin');
@@ -48,7 +47,7 @@ class Auth extends CI_Controller
                               redirect('Datauser2');
                               break;
                               case 3:
-                                redirect('Beranda');
+                                redirect('Profile');
                                 break;
                         }
                     }else{
