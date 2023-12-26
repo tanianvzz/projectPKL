@@ -1,6 +1,6 @@
 <div class="container rounded bg-white bg-primary-subtle">
     <h2 class="text text-center p-3">ISI DATA SISWA</h2>
-    <form action="<?= base_url('Datauser2/update_profile2') ?>" method="POST" enctype="multipart/form-data">
+    <form action="<?= base_url('Datauser2') ?>" method="POST" enctype="multipart/form-data">
         <div class="row">
             <div class="col-md-3 border-right">
                 <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5"

@@ -24,7 +24,7 @@ class Datauser2 extends CI_Controller {
 		$this->form_validation->set_rules('jenis_kelamin', 'Jenis Kelamin', 'required');
 		// Tambahkan aturan validasi lainnya sesuai kebutuhan
 	
-		echo fileuploadCI('upload_file', 'uploads');
+		echo profilubah('upload_file', 'uploads');
 	
 		if ($this->form_validation->run() == false) {
 			$this->load->view('user2/header', $data);
