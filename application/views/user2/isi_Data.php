@@ -1,4 +1,5 @@
 <div class="container rounded bg-white bg-primary-subtle">
+<?php if (!empty($user)): ?>
     <h2 class="text text-center p-3">ISI DATA SISWA</h2>
     <form action="<?= base_url('Datauser2') ?>" method="POST" enctype="multipart/form-data">
         <div class="row">
@@ -74,4 +75,5 @@
             </div>
         </div>
         </form>
+        <?php endif; ?>
 </div>

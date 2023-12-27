@@ -1,54 +1,77 @@
-<!-- Begin Page Content -->
-<div class="container mt-5">
-    <div class="row">
-        <div class="col-lg-6 justify-content-x">
+<div class="container-fluid">
+        <?php if (!empty($user)): ?>
+        <section style="background-color: #eee;">
+            <div class="container py-5">
+                <h1 class="text-center ">Profile Siswa</h1>
+                <center>
+                    <hr class="w-25">
+                </center>
+                <div class="row m-3">
+                    <div class="col-lg-4">
+                        <div class="card mb-4">
+                            <div class="card-body text-center">
+                                <img src="<?= base_url('assets/img/profile/') . $user['image']; ?>"
+                                    alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
+                                <h5 class="my-3"><?= $user['name']; ?></h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-8">
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <p class="mb-0">Nama Sekolah</p>
+                                    </div>
+                                    <div class="col-sm-9">
+                                        <p class="text-muted mb-0"><?= $data['nama_sekolah']; ?></p>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <p class="mb-0">Email</p>
+                                    </div>
+                                    <div class="col-sm-9">
+                                        <p class="text-muted mb-0"><?= $data['email']; ?></p>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <p class="mb-0">No. Pembimbing</p>
+                                    </div>
+                                    <div class="col-sm-9">
+                                        <p class="text-muted mb-0"><?= $data['no_pembimbing']; ?></p>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <p class="mb-0">Jurusan</p>
+                                    </div>
+                                    <div class="col-sm-9">
+                                        <p class="text-muted mb-0"><?= $data['jurusan']; ?></p>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <p class="mb-0">Jenis Kelamin</p>
+                                    </div>
+                                    <div class="col-sm-9">
+                                        <p class="text-muted mb-0"><?= $data['jenis_kelamin']; ?></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                           
 
-        </div>
-    </div>
-    <div class="card mb-3">
-        <div class="row no-gutters">
-            <div class="col-md-4">
-                <img src="<?= base_url('asset/img/profile/') . $user['image']; ?>" class="card-img" alt="...">
-            </div>
-            <div class="col-md-8">
-                <div class="card-body">
-
-                    <h5 class="card-title mt-5">
-                        <h1>
-                            <?= $user['name']; ?>
-                        </h1>
-                    </h5>
-                    <p class="card-text">
-                    <div class="col-md-12">
-                        <h5>
-                            <?php ?>
-                        </h5><br>
+                        
+                        </div>
                     </div>
-                    <div class="col-md-2 mt-1   "><i class="fa-solid fa-venus-mars"></i></div>
-                    <div class="col-md-10">
-                        <? ?>
-                    </div>
-                    <div class="col-md-2 mt-1   "><i class="fa-solid fa-school"></i></div>
-                    <div class="col-md-10">
-                        <?php ?>
-                    </div>
-                    <div class="col-md-2 mt-1   "><i class="fa-solid fa-pen"></i></div>
-                    <div class="col-md-10">
-                        <?php ?>
-                    </div>
-                    <?= $user['email']; ?>
-                    <h5></h5>
-                    </p>
-
                 </div>
-                <div class="btn btn-info m-3 my-3">
-                    <a href="<?= base_url() ?>datauser2/<?php echo $user['id']; ?>" class="text text-white">
-                        <i class="fas fa-user-edit"></i> Ubah Profil</a>
-                </div>
             </div>
-        </div>
+        </section>
+        <?php endif; ?>
     </div>
-</div>
-
-
-<!-- /.container-fluid -->

@@ -16,7 +16,7 @@ class Datauser2 extends CI_Controller {
 	{       
 		$data['title'] = 'U Find';
 		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
-		$data['data'] = $this->M_user2->SemuaData()->result_array();
+		$data['data'] = $this->M_user2->SemuaDataUser();
 	
 		// Set rules untuk form validation
 		$this->form_validation->set_rules('name', 'Nama', 'required');
@@ -69,7 +69,7 @@ class Datauser2 extends CI_Controller {
 		// }
 		$data['title'] = ' U Find';
         $data['user']= $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
-        $data['data'] = $this->M_user2->SemuaData()->result_array();
+        $data['data'] = $this->M_user2->SemuaData();
 			$this->load->view('user2/header',$data);
 			$this->load->view('user2/navigasi',$data);
 			$this->load->view('user2/user_profile2', $data);
@@ -87,9 +87,46 @@ class Datauser2 extends CI_Controller {
         $data['tempat'] = $this->M_user2->SemuaDataPost()->result_array();
 		$this->load->view('user2/header',$data);
 		$this->load->view('user2/navigasi',$data);
-			$this->load->view('user2/user2_personal', $data);
+			$this->load->view('user2/find_post', $data);
 			$this->load->view('user2/footer',$data);
 	}
+	public function detail($id_tempat)
+	{
+		$data['title'] = ' Detail Tempat';
+		$data['tempat'] = $this->M_user2->tampil_data()->result_array();
+		$data['user']= $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+       $data['tempat'] = $this->M_user2->detail($id_tempat);
+        $this->load->view('user2/header',$data);
+        $this->load->view('user2/detail',$data);
+   }
+
+   public function ajukan()
+{
+	
+	$combinedData = $this->M_user2->pengajuan();
+	$isSubmitted = $this->session->userdata('pengajuan_submitted');
+
+    if ($combinedData && !$isSubmitted) {
+        $data = [
+            'name' => $combinedData['name'],
+            'email' => $combinedData['email'],
+            'jurusan' => $combinedData['jurusan'],
+            'nama_sekolah' => $combinedData['nama_sekolah'],
+            'alamat_sekolah' => $combinedData['alamat_sekolah'],
+            'nis' => $combinedData['nis'],
+            'no_pembimbing' => $combinedData['no_pembimbing'],
+        ];
+
+        $this->db->insert('pengajuan', $data);
+      // Set session bahwa pengguna telah mengajukan
+	  $this->session->set_userdata('pengajuan_submitted', true);
+	  echo '<script>alert("Pengajuan berhasil dilakukan.");</script>';
+	  redirect('Datauser2/find');
+  } else {
+	echo '<script>alert("Anda Sudah Mengajukan.");</script>';
+	redirect('Datauser2/find');
+  }
+}
 	
 	public function logout(){
         $this->session->unset_userdata('email');
