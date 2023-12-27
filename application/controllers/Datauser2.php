@@ -13,54 +13,39 @@ class Datauser2 extends CI_Controller {
 	}
 	
 	public function index()
-	{       
-		$data['title'] = 'U Find';
-		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
-		$data['data'] = $this->M_user2->SemuaDataUser();
-	
-		// Set rules untuk form validation
-		$this->form_validation->set_rules('name', 'Nama', 'required');
-		$this->form_validation->set_rules('email', 'Email', 'required|valid_email');
-		$this->form_validation->set_rules('jenis_kelamin', 'Jenis Kelamin', 'required');
-		// Tambahkan aturan validasi lainnya sesuai kebutuhan
-	
-		echo profilubah('upload_file', 'uploads');
-	
-		if ($this->form_validation->run() == false) {
-			$this->load->view('user2/header', $data);
-			$this->load->view('user2/isi_Data', $data);
-			$this->load->view('user2/footer');
-		} else {
-			$gambar = '';
-	
-			if (!empty($_FILES['upload_file']['name'])) {
-				if ($this->upload->do_upload('upload_file')) {
-					$image = $this->upload->data();
-					$gambar = $image['file_name'];
-				} else {
-					$error = array('error' => $this->upload->display_errors());
-					print_r($error);
-				}
-			}
-	
-			$data = array(
-				'id' => $this->input->post('id'),
-				'name' => $this->input->post('name'),
-				'email' => $this->input->post('email'),
-				'jenis_kelamin' => $this->input->post('jenis_kelamin'),
-				'nama_sekolah' => $this->input->post('nama_sekolah'),
-				'alamat_sekolah' => $this->input->post('alamat_sekolah'),
-				'nis' => $this->input->post('nis'),
-				'tgl_lahir' => $this->input->post('tgl_lahir'),
-				'jurusan' => $this->input->post('jurusan'),
-				'no_pembimbing' => $this->input->post('no_pembimbing'),
-				'image' => $gambar,
-			);
-	
-			$this->M_user2->data_member($data);
-			redirect('Datauser2/myprofile');
-		}
-	}
+{
+    $data['title'] = 'U Find';
+    $data['user'] = $this->M_user2->SemuaData();
+    $isSubmitted = $this->session->userdata('isiData_submitted');
+
+    // $data['data'] = $this->M_user2->SemuaDataUser();
+
+    if ($this->input->post('submit_button_name')) {
+        $this->load->view('user2/header', $data);
+        $this->load->view('user2/isi_Data', $data);
+        $this->load->view('user2/footer');
+        $gambar = "";
+        $data = array(
+            'id' => $this->input->post('id_user'),
+            'name' => $this->input->post('name'),
+            'email' => $this->input->post('email'),
+            'jenis_kelamin' => $this->input->post('jenis_kelamin'),
+            'nama_sekolah' => $this->input->post('nama_sekolah'),
+            'alamat_sekolah' => $this->input->post('alamat_sekolah'),
+            'nis' => $this->input->post('nis'),
+            'tgl_lahir' => $this->input->post('tgl_lahir'),
+            'jurusan' => $this->input->post('jurusan'),
+            'no_pembimbing' => $this->input->post('no_pembimbing'),
+            'image' => $gambar,
+        );
+
+        $this->session->set_userdata('isiData_submitted', true);
+        $this->M_user2->data_member($data);
+        redirect('Datauser2/myprofile');
+    } else {
+        redirect('datauser2/myprofile');
+    }
+}
 	
 	public function Myprofile()
 	{

@@ -4,27 +4,19 @@
     <form action="<?= base_url('Datauser2') ?>" method="POST" enctype="multipart/form-data">
         <div class="row">
             <div class="col-md-3 border-right">
-                <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5"
-                        width="150px" src="<?= base_url('asset/img/profile/'). $user['image']; ?>"><span
+                <div class="d-flex flex-column align-items-center text-center p-3 py-5"><span
                         class="font-weight-bold">
                         <?= $user['name']; ?>
                     </span><span class="text-black-50">
                         <?= $user['email']; ?>
                     </span><span>
                     </span>
-                    <span>
-                    <div class=""> 
-                        <div class="custom-file"> 
-                            <input type="file" class="custom-file-input" id="image" name="image"> 
-                        </div> 
-                    </div> 
-                    </span>
                 </div>
             </div>
             <div class="col-md-8 border-right">
                
                     <div class="row">
-                        <input type="number" value="<? $user['id'];?>" hidden>
+                        <input type="number" value="<? $user['id'];?>" hidden name="id" id="id">
                         <div class="mt-2">
                             <div class="col-md-12"><label class="col-form-label">Nama Lengkap</label><input required
                                     type="text" class="form-control" name="name" id="name" placeholder="Nama Lengkap"

@@ -7,7 +7,7 @@ class M_user2 extends CI_Model {
         $email = $this->session->userdata('email');
         $this->db->select('user.*, data_member.*');
             $this->db->from('user');
-            $this->db->join('data_member', 'user.id = data_member.id', 'left'); // Sesuaikan kriteria join berdasarkan hubungan antara kedua tabel
+            $this->db->join('data_member', 'user.id = data_member.id_user', 'left'); // Sesuaikan kriteria join berdasarkan hubungan antara kedua tabel
             $this->db->where('user.email', $email);
         
             $query = $this->db->get();
@@ -52,7 +52,7 @@ class M_user2 extends CI_Model {
             // Query untuk mengambil data pengguna dari kedua tabel berdasarkan email
             $this->db->select('user.*, data_member.*');
             $this->db->from('user');
-            $this->db->join('data_member', 'user.id = data_member.id', 'left'); // Sesuaikan kriteria join berdasarkan hubungan antara kedua tabel
+            $this->db->join('data_member', 'user.id = data_member.user_id', 'left'); // Sesuaikan kriteria join berdasarkan hubungan antara kedua tabel
             $this->db->where('user.email', $email);
         
             $query = $this->db->get();
