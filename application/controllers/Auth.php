@@ -7,6 +7,7 @@ class Auth extends CI_Controller
     {
         parent :: __construct();
         $this->load->library('form_validation');
+        $this->load->model('M_user2');
         //$this->session->userdata('is_login') == true;
         //redirect('auth');
     }
@@ -65,6 +66,7 @@ class Auth extends CI_Controller
             $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert"> email belum pernah terdaftar </div>');
            redirect('auth');  
         }
+        
     }
     public function registration()
     {
@@ -92,6 +94,16 @@ class Auth extends CI_Controller
             'date_created' => time(),
            ];
            $this->db->insert('user', $data);
+           $newUserId = $this->db->insert_id();
+    $additionalData = array(
+        'id_user' => $newUserId,  // Gunakan ID pengguna yang baru terdaftar
+        'name' => $this->input->post('name'),
+        'email' => $this->input->post('email'),
+        // ... tambahkan nilai-nilai lainnya ...
+    );
+
+    $this->M_user2->tambahDataMember($additionalData);
+
            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> congratulation! your acount has been created. Please Login</div>');
            redirect('auth');        
         }

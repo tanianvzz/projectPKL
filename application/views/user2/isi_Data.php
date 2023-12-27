@@ -1,7 +1,7 @@
 <div class="container rounded bg-white bg-primary-subtle">
 <?php if (!empty($user)): ?>
     <h2 class="text text-center p-3">ISI DATA SISWA</h2>
-    <form action="<?= base_url('Datauser2') ?>" method="POST" enctype="multipart/form-data">
+    <form action="<?= base_url('Datauser2/isi_data') ?>" method="POST" enctype="multipart/form-data">
         <div class="row">
             <div class="col-md-3 border-right">
                 <div class="d-flex flex-column align-items-center text-center p-3 py-5"><span
@@ -16,11 +16,10 @@
             <div class="col-md-8 border-right">
                
                     <div class="row">
-                        <input type="number" value="<? $user['id'];?>" hidden name="id" id="id">
                         <div class="mt-2">
                             <div class="col-md-12"><label class="col-form-label">Nama Lengkap</label><input required
                                     type="text" class="form-control" name="name" id="name" placeholder="Nama Lengkap"
-                                    value=""></div>
+                                    value="<?= $user['name'];  ?>" readonly></div>
                         </div>
                         <div class="col-md-12"><label class="col-form-label">Email</label><input required
                                     type="text" class="form-control" name="email" id="email" placeholder="Email"

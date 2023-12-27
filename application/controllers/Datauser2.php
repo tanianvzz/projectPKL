@@ -13,40 +13,42 @@ class Datauser2 extends CI_Controller {
 	}
 	
 	public function index()
-{
+{       
     $data['title'] = 'U Find';
-    $data['user'] = $this->M_user2->SemuaData();
-    $isSubmitted = $this->session->userdata('isiData_submitted');
+    $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+    $data['data'] = $this->M_user2->SemuaData();
+$exist=$this->M_user2->CekData();
 
-    // $data['data'] = $this->M_user2->SemuaDataUser();
-
-    if ($this->input->post('submit_button_name')) {
-        $this->load->view('user2/header', $data);
+        if($exist == NULL){
+			$this->load->view('user2/header', $data);
         $this->load->view('user2/isi_Data', $data);
         $this->load->view('user2/footer');
-        $gambar = "";
-        $data = array(
-            'id' => $this->input->post('id_user'),
-            'name' => $this->input->post('name'),
-            'email' => $this->input->post('email'),
-            'jenis_kelamin' => $this->input->post('jenis_kelamin'),
-            'nama_sekolah' => $this->input->post('nama_sekolah'),
-            'alamat_sekolah' => $this->input->post('alamat_sekolah'),
-            'nis' => $this->input->post('nis'),
-            'tgl_lahir' => $this->input->post('tgl_lahir'),
-            'jurusan' => $this->input->post('jurusan'),
-            'no_pembimbing' => $this->input->post('no_pembimbing'),
-            'image' => $gambar,
-        );
+		}else{
+			redirect('datauser2/myprofile');
+		}
+		
 
-        $this->session->set_userdata('isiData_submitted', true);
-        $this->M_user2->data_member($data);
-        redirect('Datauser2/myprofile');
-    } else {
-        redirect('datauser2/myprofile');
-    }
 }
 	
+public function isi_data(){
+	$gambar= 'default.jpg';
+	$data = array(
+		// 'id_user' => $this->input->post('id_user'),
+		// 'name' => $this->input->post('name'),
+		// 'email' => $this->input->post('email'),
+		'jenis_kelamin' => $this->input->post('jenis_kelamin'),
+		'nama_sekolah' => $this->input->post('nama_sekolah'),
+		'alamat_sekolah' => $this->input->post('alamat_sekolah'),
+		'nis' => $this->input->post('nis'),
+		'tgl_lahir' => $this->input->post('tgl_lahir'),
+		'jurusan' => $this->input->post('jurusan'),
+		'no_pembimbing' => $this->input->post('no_pembimbing'),
+		'image' => $gambar,
+	);
+	
+	$this->M_user2->data_member($data);
+	redirect('Datauser2/myprofile');
+}
 	public function Myprofile()
 	{
 		// if (!$this->session->userdata('logged_in')) {
@@ -61,11 +63,6 @@ class Datauser2 extends CI_Controller {
 			$this->load->view('user2/footer',$data);
 		
 	}
-	public function update_profil2()
-    {
-		
-    }
-
 	public function find(){
 		$data['title'] = ' U Find';
         $data['user']= $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
