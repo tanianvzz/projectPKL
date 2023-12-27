@@ -12,21 +12,19 @@
     crossorigin="anonymous"></script>
 
 </head>
-
+<style type="text/css">
+        body{
+            background-image: url('../../asset/img/bg.jpg');
+            background-size: 1365px;
+            margin-top: 10px;
+            margin-right: 10px;
+        }
+    </style>
 <body>
 
   <header>
-  <style type="text/css">
-        body{
-            background-image: url('../asset/img/U.jpg');
-            background-size: 1365px;
-            margin-top: 10px;
-            margin-left: 20px;
-        }
-    </style>
-    <nav class="navbar navbar-expand-md navbar-dark mt-">
+    <nav class="navbar navbar-expand-md navbar-white  mt-">
       <div class="container-fluid">
-
         
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
           aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -46,49 +44,44 @@
           </ul>
           <form class="d-flex">
             <input class="form-control mr-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-primary" type="submit">logout</button>
+            <a href="<?php echo base_url('Admin/admin/');?>" class="btn btn-outline-primary" type="submit">Back</a>
           </form>
 
         </div>
       </div>
     </nav>
   </header>
+</body>
+</html>
 
-<center><div class="class">
-<div class="container-fluid mt-5 lg-2">
-  <div class="row">
-  <div class="col-md-4 mt-5">
-  <div class="card mt-5 m-" style="width: 20rem;">
-    <div class="card-body">
-      <h5 class="card-title">Data Akun</h5>
-      <p class="card-text">quick example text to build on the card title and make up the bulk of the card's
-        content.</p>
-      <a href="<?php echo base_url('admin/Admin/ass');?>" class="btn btn-primary">Go somewhere</a>
-    </div>
-  </div>
-</div>
+<div class="container-fluid"> 
+        <table class="table table-bordered mt-5 text-white">
+            <tr>
+                <th>ID TEMPAT</th>
+                <th>ALAMAT TEMPAT</th>
+                <th>NAMA TEMPAT</th>
+                <th>DESKRIPSI</th>
+                <th>JURUSAN</th>
+                <th>GAMBAR</th>
+                <th>NO_TELP</th>
+            </tr>
+            
+            <?php
+            $no= 1;
+            foreach($perusahaan as $pt) : ?>
+ 
+            <tr>
+                
+                <td><?php echo $pt->id_tempat ?></td>
+                <td><?php echo $pt->alamat_tempat ?></td>
+                <td><?php echo $pt->nama_tempat ?></td>
+                <td><?php echo $pt->deskripsi ?></td>
+                <td><?php echo $pt->Jurusan ?></td>
+                <td><?php echo $pt->gambar ?></td>
+                <td><?php echo $pt->no_telp ?></td>
+            </tr>
 
-<div class="col-md-4 mt-10">
-  <div class="card mt-5 m-" style="width: 20rem;">
-    <div class="card-body">
-      <h5 class="card-title">Data Post</h5>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-        content.</p>
-      <a href="<?php echo base_url('admin/Admin/pt');?>" class="btn btn-primary">Go somewhere</a>
-    </div>
-  </div>
-</div>
+            <?php endforeach; ?>
 
-<div class="col-md-4 mt-5">
-  <div class="card mt-5 m-" style="width: 20rem;">
-    <div class="card-body">
-      <h5 class="card-title">Data Profil</h5>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-        content.</p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
-    </div>
-  </div>
-</div>  
+        </table>
 </div>
-</div>
-</center>
