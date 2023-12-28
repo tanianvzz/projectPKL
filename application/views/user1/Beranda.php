@@ -1,4 +1,4 @@
-  <div class="container-fluid ">
+<div class="container-fluid ">
       <div class="row p-5 ">
       <?php foreach ($tempat as $tmpt) : ?> 
           <div class="card m-5 bg-light text-dark" style="width:530px; height:640px;">
