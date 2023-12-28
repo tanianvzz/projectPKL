@@ -2,17 +2,16 @@
 
     <section>
         <div class="container py-5">
-            <?php foreach($company1 as $c1) : ?>
             <div class="row">
                 <div class="col-lg-4">
                     <div class="card mb-4">
                         <div class="card-body text-center">
                             <img src="<?= base_url('asset/img/profile/default.png') ?>" alt="avatar"
                                 class="rounded-circle img-fluid" style="width: 150px;">
-                            <h5 class="my-3"><?= $c1['name']; ?></h5>
-                            <p class="text-muted mb-1"><?= $c1['email']; ?></p>
+                            <h5 class="my-3"><?= $user['name']; ?></h5>
+                            <p class="text-muted mb-1"><?= $user['email']; ?></p>
                             <p class="card-text"><small class="text-body-secondary">member since
-                                    <?= date('d-m-Y', $c1['date_created']); ?></small></p>
+                                    <?= date('d-m-Y', $user['date_created']); ?></small></p>
                             <div class="d-flex justify-content-center mb-2">
                                 <!-- Button trigger modal -->
                                 <button type="button" class="btn btn-primary" data-bs-toggle="modal"
@@ -33,7 +32,7 @@
                                                 aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
-                                            <form method="post" action="<?= base_url(). 'Perusahaan/tambah_data';?>">
+                                            <form method="post" action="<?= base_url(). 'Profile/tambah_aksi';?>">
                                                 <div class="form-group mb-2">
                                                     <label class="d-flex justify-content-start mb-2">Nama perusahaan
                                                     </label>
@@ -78,7 +77,6 @@
                             </div>
                         </div>
                     </div>
-                    <?php endforeach;?>
 
                     <div class="card mb-4 mb-lg-0">
                         <div class="card-body p-0">
@@ -114,14 +112,14 @@
                 <div class="col-lg-8">
                     <div class="card mb-4">
                         <div class="card-body">
-                            <?php if (!empty($company2)): ?>
+                            <?php if (!empty($profiles)): ?>
                             <div class="row">
-                                <p hidden><?= $company2['user_id']?></p>
+                                <p hidden name="user_id"><?= $profiles['user_id']?></p>
                                 <div class="col-sm-3">
                                     <p class="mb-0">Nama Perusahaan</p>
                                 </div>
                                 <div class="col-sm-9">
-                                    <p class="text-muted mb-0"><?= $company2['name']?></p>
+                                    <p class="text-muted mb-0"><?= $profiles['name']?></p>
                                 </div>
                             </div>
                             <hr>
@@ -130,7 +128,7 @@
                                     <p class="mb-0">Alamat Perusahaan</p>
                                 </div>
                                 <div class="col-sm-9">
-                                    <p class="text-muted mb-0"><?= $company2['address']?></p>
+                                    <p class="text-muted mb-0"><?= $profiles['address']?></p>
                                 </div>
                             </div>
                             <hr>
@@ -139,7 +137,7 @@
                                     <p class="mb-0">Telepon</p>
                                 </div>
                                 <div class="col-sm-9">
-                                    <p class="text-muted mb-0"><?= $company2['phone']?></p>
+                                    <p class="text-muted mb-0"><?= $profiles['phone']?></p>
                                 </div>
                             </div>
                             <hr>
@@ -148,7 +146,7 @@
                                     <p class="mb-0">Jenis bidang</p>
                                 </div>
                                 <div class="col-sm-9">
-                                    <p class="text-muted mb-0"><?= $company2['major']?></p>
+                                    <p class="text-muted mb-0"><?= $profiles['major']?></p>
                                 </div>
                             </div>
                             <hr>
@@ -157,7 +155,7 @@
                                     <p class="mb-0">deskripsi</p>
                                 </div>
                                 <div class="col-sm-9">
-                                    <p class="text-muted mb-0"><?= $company2['description']?></p>
+                                    <p class="text-muted mb-0"><?= $profiles['description']?></p>
                                 </div>
                             </div>
                         </div>
@@ -174,13 +172,79 @@
                                     <p class="mb-4 text-center"><span
                                             class="text-primary font-italic me-1">Approve</span> Peserta
                                     </p>
-
+                                    <hr class="dark">
+                                    <!-- Begin Page Content -->
+                                    <div class="container-fluid">
+                                        <div class="card-body">
+                                            <div class="grid">
+                                                <div class="col-md-12">
+                                                    <div class="hero-callout">
+                                                        <table></table>
+                                                        <div id="example_wrapper" class="dataTables_wrapper">
+                                                            <table id="example"
+                                                                class="display nowrap dataTable dtr-inline collapsed"
+                                                                style="width: 100%;" aria-describedby="example_info">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th class="sorting sorting_asc" tabindex="0"
+                                                                            rowspan="1" colspan="1" style="width: 90px;"
+                                                                            aria-sort="ascending"
+                                                                            aria-label="Name: activate to sort column descending">
+                                                                            No</th>
+                                                                        <th class="sorting" tabindex="0" rowspan="1"
+                                                                            colspan="1" style="width: 100px;"
+                                                                            aria-label="Position: activate to sort column ascending">
+                                                                            Data Peserta</th>
+                                                                        <th class="sorting" tabindex="0" rowspan="1"
+                                                                            colspan="1" style="width: 100px;"
+                                                                            aria-label="Office: activate to sort column ascending">
+                                                                            Tanggal Pengajuan</th>
+                                                                        <th class="dt-body-right sorting" tabindex="0"
+                                                                            rowspan="1" colspan="1"
+                                                                            style="width: 35px;">Status</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <?php 
+                                                            $no = 1;
+                                                            if (!empty($customer)) {
+                                                                // echo "Tidak ada data";
+                                                            // }else {
+                                                                foreach ($customer as $inv) : ?>
+                                                                    <tr>
+                                                                        <td><?= $no++; ?></td>
+                                                                        <td><?= $inv->nama_cutomer ?></td>
+                                                                        <td><?= date("D, d M Y" ,strtotime($inv->tgl_pesan)) ?>
+                                                                        </td>
+                                                                        <td><?= date("D, d M Y" ,strtotime($inv->batas_bayar)) ?>
+                                                                        </td>
+                                                                        <td>
+                                                                            <a class="btn btn-success"
+                                                                                href="<?php echo base_url() ?>Profile/hapus_data<?= $inv->id ?>">Hapus</a>
+                                                                            <a class="btn btn-success"
+                                                                                href="<?php echo base_url() ?>Profile/terima_data<?= $inv->id ?>">Terima</a>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <?php endforeach; 
+                                    } 
+                                    ?>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- /.container-fluid -->
                                 </div>
+                                <!-- End of Main Content -->
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+</div>
+</section>
 </div>

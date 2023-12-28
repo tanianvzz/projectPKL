@@ -44,7 +44,6 @@
             <input class="form-control w-25 ms-3" type="file" id="formFileMultiple" name="gambar"
                 class="btn btn-light" required="">
         </div>
-        <hr>
         <div class="modal-footer">
             <button type="submit" class="btn btn-light m-3 "><strong>tambah data</strong></button>
         </div>

@@ -15,7 +15,7 @@ class Beranda extends CI_Controller
 		$this->load->view('user1/navigasi',$data);
 		$this->load->view('user1/header',$data);
 		$this->load->view('user1/Beranda',$data);
-		$this->load->view('user1/footer');
+		$this->load->view('user1/footer',$data);
 	}
 	public function detail($id_tempat)
 	{
@@ -43,7 +43,7 @@ class Beranda extends CI_Controller
    {
 	   $id_tempat          = $this->input->post('id_tempat');
 	   $nama_tempat        = $this->input->post('nama_tempat');
-	   $alamat_tempat = $this->input->post('alamat_tempat');
+	   $alamat_tempat= $this->input->post('alamat_tempat');
 	   $Jurusan     = $this->input->post('Jurusan');
 
 	   $data = array(

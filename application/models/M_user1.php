@@ -24,6 +24,11 @@ class M_user1 extends CI_Model
     {
         return $this->db->get_where($where, $table);
     }
+    public function tambah_profile($data)
+    {
+        $this->db->insert('company_profiles', $data);
+        
+    }
     public function detail($id_tempat)
     {
        $result = $this->db->where('id_tempat',$id_tempat)->get('tb_tempatpkl');
@@ -51,12 +56,18 @@ class M_user1 extends CI_Model
         $this->db->where($where);
         $this->db->delete($table);  
     }
-    public function get_profiles_by_email($email) {
+    public function get_profiles_by_email() {
+        $email = $this->session->userdata('email');
+
         $this->db->select('user.*, company_profiles.*');
         $this->db->from('user');
-        $this->db->join('company_profiles', 'user.email = company_profiles.email');
-        $this->db->where('user.email', $email);
-        return $this->db->get()->result_array();
+        $this->db->join('company_profiles', 'user.id = company_profiles.user_id', 'left');
+        $this->db->where('user.email', $email); // Assuming $email is the email you want to match
+  
+        $query = $this->db->get();
+        $result = $query->row_array(); // Use result_array() if you expect multiple rows
+
+        return $result;
     }
     
     
