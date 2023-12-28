@@ -144,7 +144,7 @@
                             <div class="row">
                                 <div class="col-sm-3">
                                     <p class="mb-0">Jenis bidang</p>
-                                </div>  
+                                </div>
                                 <div class="col-sm-9">
                                     <p class="text-muted mb-0"><?= $profiles['major']?></p>
                                 </div>
@@ -172,13 +172,79 @@
                                     <p class="mb-4 text-center"><span
                                             class="text-primary font-italic me-1">Approve</span> Peserta
                                     </p>
-
+                                    <hr class="dark">
+                                    <!-- Begin Page Content -->
+                                    <div class="container-fluid">
+                                        <div class="card-body">
+                                            <div class="grid">
+                                                <div class="col-md-12">
+                                                    <div class="hero-callout">
+                                                        <table></table>
+                                                        <div id="example_wrapper" class="dataTables_wrapper">
+                                                            <table id="example"
+                                                                class="display nowrap dataTable dtr-inline collapsed"
+                                                                style="width: 100%;" aria-describedby="example_info">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th class="sorting sorting_asc" tabindex="0"
+                                                                            rowspan="1" colspan="1" style="width: 90px;"
+                                                                            aria-sort="ascending"
+                                                                            aria-label="Name: activate to sort column descending">
+                                                                            No</th>
+                                                                        <th class="sorting" tabindex="0" rowspan="1"
+                                                                            colspan="1" style="width: 100px;"
+                                                                            aria-label="Position: activate to sort column ascending">
+                                                                            Data Peserta</th>
+                                                                        <th class="sorting" tabindex="0" rowspan="1"
+                                                                            colspan="1" style="width: 100px;"
+                                                                            aria-label="Office: activate to sort column ascending">
+                                                                            Tanggal Pengajuan</th>
+                                                                        <th class="dt-body-right sorting" tabindex="0"
+                                                                            rowspan="1" colspan="1"
+                                                                            style="width: 35px;">Status</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <?php 
+                                                            $no = 1;
+                                                            if (!empty($customer)) {
+                                                                // echo "Tidak ada data";
+                                                            // }else {
+                                                                foreach ($customer as $inv) : ?>
+                                                                    <tr>
+                                                                        <td><?= $no++; ?></td>
+                                                                        <td><?= $inv->nama_cutomer ?></td>
+                                                                        <td><?= date("D, d M Y" ,strtotime($inv->tgl_pesan)) ?>
+                                                                        </td>
+                                                                        <td><?= date("D, d M Y" ,strtotime($inv->batas_bayar)) ?>
+                                                                        </td>
+                                                                        <td>
+                                                                            <a class="btn btn-success"
+                                                                                href="<?php echo base_url() ?>Profile/hapus_data<?= $inv->id ?>">Hapus</a>
+                                                                            <a class="btn btn-success"
+                                                                                href="<?php echo base_url() ?>Profile/terima_data<?= $inv->id ?>">Terima</a>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <?php endforeach; 
+                                    } 
+                                    ?>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- /.container-fluid -->
                                 </div>
+                                <!-- End of Main Content -->
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+</div>
+</section>
 </div>

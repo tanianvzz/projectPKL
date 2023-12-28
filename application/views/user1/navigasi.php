@@ -13,23 +13,12 @@
                 <li class="nav-item">
                     <a class="nav-link" href="<?= base_url('Post'); ?>">Post</a>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="<?= base_url('Profile')?>" id="navbarDropdown" role="button"
-                        data-bs-toggle="dropdown" aria-expanded="false">
-                        profile
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="<?= base_url('Profile')?>">My Profile</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item bg-primary" href="<?= base_url('Auth/logout')?>">Logout akun</a></li>
-                    </ul>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?= base_url('Profile'); ?>">My Profile</a>
                 </li>
-                
-
-
             </ul>
+            <i class="fa-solid fa-right-from-bracket mt-1 p-1"></i>
+            <a class="nav-link " href="<?= base_url('Auth/logout')?>">Logout</a>
         </div>
     </div>
 </nav>
