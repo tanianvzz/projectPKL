@@ -7,7 +7,7 @@
                 <div class="col-lg">
                     <div class="p-5">
                         <div class="text-center">
-                            <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
+                        <img src="<?=base_url('assets/img/logo1.png'); ?>" class="w-25">
                         </div>
                         <form class="user" method="post" action="<?= base_url('auth/registration'); ?>">
 

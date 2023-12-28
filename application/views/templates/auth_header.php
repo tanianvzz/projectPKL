@@ -9,7 +9,9 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title><?= $title; ?></title>
+    <title>
+        <?= $title; ?>
+    </title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -19,7 +21,10 @@
 
     <!-- Custom styles for this template-->
     <link href="<?= base_url('assets/'); ?>css/sb-admin-2.min.css" rel="stylesheet">
-
+    <style>
+        body {
+            background-image: url(<?= base_url('assets/img/bg3.jpg') ?>);
+            background-size: cover;
+        }
+    </style>
 </head>
-
-<body class="bg-gradient-primary">
