@@ -1,82 +1,25 @@
-    <div class="container-fluid">
-        <?php if (!empty($company)): ?>
-        <section style="background-color: #eee;">
-            <div class="container py-5">
-                <h1 class="text-center ">Profile Perusahaan</h1>
-                <center>
-                    <hr class="w-25">
-                </center>
-                <div class="row m-3">
-                    <div class="col-lg-4">
-                        <div class="card mb-4">
-                            <div class="card-body text-center">
-                                <img src="<?= base_url('assets/img/profile/default.jpg') . $company['logo_path']; ?>"
-                                    alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
-                                <h5 class="my-3"><?= $company['name']; ?></h5>
-                                <p class="text-muted mb-1">Bidang <?= $company['major'];?></p>
-                                <p class="text-muted mb-4"><?= $company['address'];?></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-8">
-                        <div class="card mb-4">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-sm-3">
-                                        <p class="mb-0">Nama Perusahaan</p>
-                                    </div>
-                                    <div class="col-sm-9">
-                                        <p class="text-muted mb-0"><?= $company['name']; ?></p>
-                                    </div>
-                                </div>
-                                <hr>
-                                <div class="row">
-                                    <div class="col-sm-3">
-                                        <p class="mb-0">Email</p>
-                                    </div>
-                                    <div class="col-sm-9">
-                                        <p class="text-muted mb-0"><?= $company['email']; ?></p>
-                                    </div>
-                                </div>
-                                <hr>
-                                <div class="row">
-                                    <div class="col-sm-3">
-                                        <p class="mb-0">Telepon</p>
-                                    </div>
-                                    <div class="col-sm-9">
-                                        <p class="text-muted mb-0"><?= $company['phone']; ?></p>
-                                    </div>
-                                </div>
-                                <hr>
-                                <div class="row">
-                                    <div class="col-sm-3">
-                                        <p class="mb-0">Alamat</p>
-                                    </div>
-                                    <div class="col-sm-9">
-                                        <p class="text-muted mb-0"><?= $company['address']; ?></p>
-                                    </div>
-                                </div>
-                                <hr>
-                                <div class="row">
-                                    <div class="col-sm-3">
-                                        <p class="mb-0">Jenis Bidang</p>
-                                    </div>
-                                    <div class="col-sm-9">
-                                        <p class="text-muted mb-0"><?= $company['major']; ?></p>
-                                    </div>
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="d-flex justify-content-center mb-2 m-3">
+<div class="container-fluid">
+
+    <section>
+        <div class="container py-5">
+            <?php foreach($company1 as $c1) : ?>
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="card mb-4">
+                        <div class="card-body text-center">
+                            <img src="<?= base_url('asset/img/profile/default.png') ?>" alt="avatar"
+                                class="rounded-circle img-fluid" style="width: 150px;">
+                            <h5 class="my-3"><?= $c1['name']; ?></h5>
+                            <p class="text-muted mb-1"><?= $c1['email']; ?></p>
+                            <p class="card-text"><small class="text-body-secondary">member since
+                                    <?= date('d-m-Y', $c1['date_created']); ?></small></p>
+                            <div class="d-flex justify-content-center mb-2">
                                 <!-- Button trigger modal -->
                                 <button type="button" class="btn btn-primary" data-bs-toggle="modal"
                                     data-bs-target="#exampleModal">
-                                    Edit
+                                    add profile data
                                 </button>
-                                <a class="btn btn-danger ms-1"
-                                    href="<?php echo base_url() ?>perusahaan/hapus/<?=$company['id']; ?>"><i
-                                        class="fas fa-fw fa-trash"></i></a>
-                        </div>
+                            </div>
 
                             <!-- Modal -->
                             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
@@ -84,53 +27,160 @@
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Edit data perusahaan</h5>
+                                            <h5 class="modal-title" id="exampleModalLabel">Masukan data profile
+                                                perusahaan anda dibawah ini !!</h5>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                 aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
-                                            <div class="row">
-                                                <form action="<?= base_url().'perusahaan/update'?>" method="post">
-                                                    <input name="id" value="<?php echo $company['id'];?>" hidden>
-
-                                                    <div class="for-group mb-3">
-                                                        <label>Nama Barang</label>
-                                                        <input type="text" name="name" class="form-control"
-                                                            value="<?= $company['name']?>">
-                                                    </div>
-                                                    <div class="for-group mb-3">
-                                                        <label>Deskripsi</label>
-                                                        <input type="text" name="description" class="form-control"
-                                                            value="<?= $company['description']?>">
-                                                    </div>
-                                                    <div class="for-group mb-3">
-                                                        <label>Alamat</label>
-                                                        <input type="text" name="address" class="form-control"
-                                                            value="<?= $company['address']?>">
-                                                    </div>
-                                                    <div class="for-group mb-3">
-                                                        <label>Phone</label>
-                                                        <input type="text" name="phone" class="form-control"
-                                                            value="<?= $company['phone']?>">
-                                                    </div>
-                                                    <div class="for-group mb-3">
-                                                        <label>Jurusan</label>
-                                                        <input type="text" name="major" class="form-control"
-                                                            value="<?= $company['major']?>">
-                                                    </div>
-                                                    <button type="submit" class="btn btn-primary">Save</button>
-                                                </form>
-                                            </div>
+                                            <form method="post" action="<?= base_url(). 'Perusahaan/tambah_data';?>">
+                                                <div class="form-group mb-2">
+                                                    <label class="d-flex justify-content-start mb-2">Nama perusahaan
+                                                    </label>
+                                                    <input type="text" name="name" class="form-control"
+                                                        id="formGroupExampleInput"
+                                                        placeholder="masukan nama Perusahaan">
+                                                </div>
+                                                <div class="form-group mb-2">
+                                                    <label class="d-flex justify-content-start mb-2">Alamat perusahaan
+                                                    </label>
+                                                    <input type="text" name="address" class="form-control"
+                                                        id="formGroupExampleInput"
+                                                        placeholder="masukan alamat Perusahaan">
+                                                </div>
+                                                <div class="form-group mb-2">
+                                                    <label class="d-flex justify-content-start mb-2">Telepon </label>
+                                                    <input type="text" name="phone" class="form-control"
+                                                        id="formGroupExampleInput"
+                                                        placeholder="masukan telepon perusahaan">
+                                                </div>
+                                                <div class="form-group mb-2">
+                                                    <label class="d-flex justify-content-start mb-2">Jenis bidang
+                                                    </label>
+                                                    <input type="text" name="major" class="form-control"
+                                                        id="formGroupExampleInput" placeholder="masukan jenis bidang">
+                                                </div>
+                                                <div class="form-group mb-2">
+                                                    <label class="d-flex justify-content-start mb-2">Deskripsi </label>
+                                                    <textarea name="description" class="form-control"
+                                                        id="formGroupExampleInput"></textarea>
+                                                </div>
+                                                <button type="submit" class="btn btn-primary m-4">tambah data</button>
+                                            </form>
                                         </div>
                                         <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-bs-dismiss="modal">Close</button>
+
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <?php endforeach;?>
+
+                    <div class="card mb-4 mb-lg-0">
+                        <div class="card-body p-0">
+                            <h4 class="d-flex justify-content-center m-3 "><strong>Postingan</strong></h4>
+                            <hr>
+                            <ul class="list-group list-group-flush rounded-3">
+                                <?php foreach ($tempat as $tmpt) : ?>
+                                <div class="card m-5 bg-light text-dark" style="">
+                                    <div class="card-body ">
+                                        <h5 class="card-title text-center"><strong><?= $tmpt['nama_tempat']; ?></strong>
+                                        </h5>
+                                        <hr>
+                                        <p class="card-title mb-4 d-flex justify-content-center "><small>Alamat berada
+                                                di
+                                                <?= $tmpt['alamat_tempat']; ?><br>Untuk jurusan
+                                                <?= $tmpt['Jurusan']; ?></small></p>
+                                        <img src="<?= base_url().'/uploads/' .$tmpt['gambar'];?>"
+                                            class="w-75 ms-3 rounded">
+                                        <a href="<?= base_url('Beranda/edit/'). $tmpt['id_tempat']; ?>"
+                                            class="btn btn-outline-primary mt-4">Edit</a>
+                                        <a href="<?= base_url('Beranda/hapus/'). $tmpt['id_tempat']; ?>"
+                                            class="btn btn-danger mt-4">Hapus</a>
+                                    </div>
+
+                                </div>
+
+                                <?php endforeach; ?>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-8">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <?php if (!empty($company2)): ?>
+                            <div class="row">
+                                <p hidden><?= $company2['user_id']?></p>
+                                <div class="col-sm-3">
+                                    <p class="mb-0">Nama Perusahaan</p>
+                                </div>
+                                <div class="col-sm-9">
+                                    <p class="text-muted mb-0"><?= $company2['name']?></p>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <p class="mb-0">Alamat Perusahaan</p>
+                                </div>
+                                <div class="col-sm-9">
+                                    <p class="text-muted mb-0"><?= $company2['address']?></p>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <p class="mb-0">Telepon</p>
+                                </div>
+                                <div class="col-sm-9">
+                                    <p class="text-muted mb-0"><?= $company2['phone']?></p>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <p class="mb-0">Jenis bidang</p>
+                                </div>
+                                <div class="col-sm-9">
+                                    <p class="text-muted mb-0"><?= $company2['major']?></p>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <p class="mb-0">deskripsi</p>
+                                </div>
+                                <div class="col-sm-9">
+                                    <p class="text-muted mb-0"><?= $company2['description']?></p>
+                                </div>
+                            </div>
+                        </div>
+                        <?php else: ?>
+                        <div class="alert alert-warning" role="alert">
+                            Harap tambahkan data perusahaan terlebih dahulu.
+                        </div>
+                    </div>
+                    <?php endif; ?>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card mb-4 mb-md-0">
+                                <div class="card-body">
+                                    <p class="mb-4 text-center"><span
+                                            class="text-primary font-italic me-1">Approve</span> Peserta
+                                    </p>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </section>
-        <?php endif; ?>
-    </div>
+        </div>
+    </section>
+</div>

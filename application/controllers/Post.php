@@ -3,7 +3,7 @@ class Post extends CI_Controller
 {
   public function __construct() {
         parent::__construct();
-    $this->load->helper('fileupload');
+    $this->load->helper('fileupload_helper');
     $this->load->model('M_user1');
     }
     public function index()
@@ -30,13 +30,14 @@ class Post extends CI_Controller
             $data = array(
                 'nama_tempat' => $nama_tempat,
                 'alamat_tempat' => $alamat_tempat,
+                'Jurusan' => $jurusan,
+                'deskripsi' => $deskripsi,
                 'no_telp' => $no_telp,
-                'Jurusan' => $jurusan,
-                'Jurusan' => $jurusan,
                 'gambar' => $gambar['file_name'],
             );
             }
             $this->M_user1->tambah_data($data,'tb_tempatpkl');
             redirect('Beranda/index');
         }
+
 }
