@@ -17,18 +17,28 @@ class Datauser2 extends CI_Controller {
     $data['title'] = 'U Find';
     $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
     $data['data'] = $this->M_user2->SemuaData();
-$exist=$this->M_user2->CekData();
+    
+    $cekkolom = array('image', 'jenis_kelamin', 'nama_sekolah', 'alamat_sekolah', 'nis', 'tgl_lahir', 'jurusan', 'no_pembimbing');
+    $userData = $this->db->get_where('data_member', ['email' => $this->session->userdata('email')])->row_array();
+    $isNull = false;
 
-        if($exist == NULL){
-			$this->load->view('user2/header', $data);
+    foreach ($cekkolom as $kolom) {
+        if (!array_key_exists($kolom, $userData) || $userData[$kolom] === null) {
+            $isNull = true;
+            break;
+        }
+    }
+
+    if ($isNull) {
+
+        $this->load->view('user2/header', $data);
         $this->load->view('user2/isi_Data', $data);
         $this->load->view('user2/footer');
-		}else{
-			redirect('datauser2/myprofile');
-		}
-		
-
+    } else {
+        redirect('datauser2/myprofile');
+    }
 }
+
 	
 public function isi_data(){
 	$gambar= 'default.jpg';
@@ -102,10 +112,10 @@ public function isi_data(){
         $this->db->insert('pengajuan', $data);
       // Set session bahwa pengguna telah mengajukan
 	  $this->session->set_userdata('pengajuan_submitted', true);
-	  echo '<script>alert("Pengajuan berhasil dilakukan.");</script>';
+	  $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert"> pengajuan berhasil dilakukan </div>');
 	  redirect('Datauser2/find');
   } else {
-	echo '<script>alert("Anda Sudah Mengajukan.");</script>';
+	$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Anda sudah melakukan pengajuan </div>');
 	redirect('Datauser2/find');
   }
 }

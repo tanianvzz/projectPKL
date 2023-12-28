@@ -94,23 +94,13 @@ class M_user2 extends CI_Model
 
      public function cekKolom()
      {
-         // Tambahkan kolom-kolom yang ingin Anda periksa
-         $kolomYangDiperiksa = array('id_user', 'name', 'email', 'image', 'jenis_kelamin', 'nama_sekolah', 'alamat_sekolah', 'nis', 'tgl_lahir', 'jurusan', 'no_pembimbing');
 
-         // Ambil data pengguna dari sesi
+         $kolomYangDiperiksa = array( 'image', 'jenis_kelamin', 'nama_sekolah', 'alamat_sekolah', 'nis', 'tgl_lahir', 'jurusan', 'no_pembimbing');
          $userData = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
  
-         // Inisialisasi variabel untuk menyimpan hasil pemeriksaan
-         $kolomKosong = FALSE;
- 
-         // Lakukan pemeriksaan terhadap kolom-kolom yang diinginkan
-         foreach ($kolomYangDiperiksa as $kolom) {
-             if (empty($userData[$kolom])) {
-                 // Jika terdapat kolom yang kosong, set variabel $kolomKosong menjadi true dan hentikan loop
-                 $kolomKosong = true;
-                 break;
+             if ($userData[$kolomYangDiperiksa]== null) {
+                 
              }
-         }
         }
         
     }
