@@ -2,17 +2,16 @@
 
     <section>
         <div class="container py-5">
-            <?php foreach($company1 as $c1) : ?>
             <div class="row">
                 <div class="col-lg-4">
                     <div class="card mb-4">
                         <div class="card-body text-center">
                             <img src="<?= base_url('asset/img/profile/default.png') ?>" alt="avatar"
                                 class="rounded-circle img-fluid" style="width: 150px;">
-                            <h5 class="my-3"><?= $c1['name']; ?></h5>
-                            <p class="text-muted mb-1"><?= $c1['email']; ?></p>
+                            <h5 class="my-3"><?= $user['name']; ?></h5>
+                            <p class="text-muted mb-1"><?= $user['email']; ?></p>
                             <p class="card-text"><small class="text-body-secondary">member since
-                                    <?= date('d-m-Y', $c1['date_created']); ?></small></p>
+                                    <?= date('d-m-Y', $user['date_created']); ?></small></p>
                             <div class="d-flex justify-content-center mb-2">
                                 <!-- Button trigger modal -->
                                 <button type="button" class="btn btn-primary" data-bs-toggle="modal"
@@ -33,7 +32,7 @@
                                                 aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
-                                            <form method="post" action="<?= base_url(). 'Perusahaan/tambah_data';?>">
+                                            <form method="post" action="<?= base_url(). 'Profile/tambah_aksi';?>">
                                                 <div class="form-group mb-2">
                                                     <label class="d-flex justify-content-start mb-2">Nama perusahaan
                                                     </label>
@@ -78,7 +77,6 @@
                             </div>
                         </div>
                     </div>
-                    <?php endforeach;?>
 
                     <div class="card mb-4 mb-lg-0">
                         <div class="card-body p-0">
@@ -114,14 +112,14 @@
                 <div class="col-lg-8">
                     <div class="card mb-4">
                         <div class="card-body">
-                            <?php if (!empty($company2)): ?>
+                            <?php if (!empty($profiles)): ?>
                             <div class="row">
-                                <p hidden><?= $company2['user_id']?></p>
+                                <p hidden name="user_id"><?= $profiles['user_id']?></p>
                                 <div class="col-sm-3">
                                     <p class="mb-0">Nama Perusahaan</p>
                                 </div>
                                 <div class="col-sm-9">
-                                    <p class="text-muted mb-0"><?= $company2['name']?></p>
+                                    <p class="text-muted mb-0"><?= $profiles['name']?></p>
                                 </div>
                             </div>
                             <hr>
@@ -130,7 +128,7 @@
                                     <p class="mb-0">Alamat Perusahaan</p>
                                 </div>
                                 <div class="col-sm-9">
-                                    <p class="text-muted mb-0"><?= $company2['address']?></p>
+                                    <p class="text-muted mb-0"><?= $profiles['address']?></p>
                                 </div>
                             </div>
                             <hr>
@@ -139,16 +137,16 @@
                                     <p class="mb-0">Telepon</p>
                                 </div>
                                 <div class="col-sm-9">
-                                    <p class="text-muted mb-0"><?= $company2['phone']?></p>
+                                    <p class="text-muted mb-0"><?= $profiles['phone']?></p>
                                 </div>
                             </div>
                             <hr>
                             <div class="row">
                                 <div class="col-sm-3">
                                     <p class="mb-0">Jenis bidang</p>
-                                </div>
+                                </div>  
                                 <div class="col-sm-9">
-                                    <p class="text-muted mb-0"><?= $company2['major']?></p>
+                                    <p class="text-muted mb-0"><?= $profiles['major']?></p>
                                 </div>
                             </div>
                             <hr>
@@ -157,7 +155,7 @@
                                     <p class="mb-0">deskripsi</p>
                                 </div>
                                 <div class="col-sm-9">
-                                    <p class="text-muted mb-0"><?= $company2['description']?></p>
+                                    <p class="text-muted mb-0"><?= $profiles['description']?></p>
                                 </div>
                             </div>
                         </div>

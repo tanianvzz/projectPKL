@@ -14,7 +14,7 @@
                     <a class="nav-link" href="<?= base_url('Post'); ?>">Post</a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                    <a class="nav-link dropdown-toggle" href="<?= base_url('Profile')?>" id="navbarDropdown" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false">
                         profile
                     </a>
@@ -23,7 +23,7 @@
                         <li>
                             <hr class="dropdown-divider">
                         </li>
-                        <li><a class="dropdown-item" href="<?= base_url('Auth/logout')?>">Logout akun</a></li>
+                        <li><a class="dropdown-item bg-primary" href="<?= base_url('Auth/logout')?>">Logout akun</a></li>
                     </ul>
                 </li>
                 
