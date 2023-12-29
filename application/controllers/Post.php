@@ -26,7 +26,7 @@ class Post extends CI_Controller
             $jurusan = $this->input->post('jurusan');
             $deskripsi = $this->input->post('deskripsi');
             $no_telp = $this->input->post('no_telp');
-            $gambar = $this->upload->data();
+            $gambar = $this->upload->data['gambar']['nama'];
             $data = array(
                 'nama_tempat' => $nama_tempat,
                 'alamat_tempat' => $alamat_tempat,

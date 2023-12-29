@@ -69,6 +69,11 @@ class M_user1 extends CI_Model
 
         return $result;
     }
-    
+    public function update($table, $data, $where)
+    {
+        $this->db->where($where)
+                ->update($table, $data);
+            return TRUE;
+    }
     
 }
