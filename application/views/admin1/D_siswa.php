@@ -12,18 +12,17 @@
     crossorigin="anonymous"></script>
 
 </head>
-
-<body>
-
-  <header>
-  <style type="text/css">
+<style type="text/css">
         body{
-            background-image: url('../asset/img/U.jpg');
+            background-image: url('../../asset/img/bg.jpg');
             background-size: 1365px;
             margin-top: 10px;
             margin-left: 20px;
         }
     </style>
+<body>
+
+  <header>
     <nav class="navbar navbar-expand-md navbar-dark mt-">
       <div class="container-fluid">
 
@@ -46,7 +45,8 @@
           </ul>
           <form class="d-flex">
             <input class="form-control mr-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-primary" type="submit">logout</button>
+            <a href="<?php echo base_url('admin/Admin/index');?>" class="btn btn-outline-primary" type="submit">Back</a>
+
           </form>
 
         </div>
@@ -54,41 +54,40 @@
     </nav>
   </header>
 
-<center><div class="class">
-<div class="container-fluid mt-5 lg-2">
-  <div class="row">
-  <div class="col-md-4 mt-5">
-  <div class="card mt-5 m-" style="width: 20rem;">
-    <div class="card-body">
-      <h5 class="card-title">Data Akun</h5>
-      <p class="card-text">quick example text to build on the card title and make up the bulk of the card's
-        content.</p>
-      <a href="<?php echo base_url('admin/Admin/ass');?>" class="btn btn-primary">Go somewhere</a>
-    </div>
-  </div>
-</div>
 
-<div class="col-md-4 mt-10">
-  <div class="card mt-5 m-" style="width: 20rem;">
-    <div class="card-body">
-      <h5 class="card-title">Data Post</h5>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-        content.</p>
-      <a href="<?php echo base_url('admin/Admin/pt');?>" class="btn btn-primary">Go somewhere</a>
-    </div>
-  </div>
-</div>
 
-<div class="col-md-4 mt-5">
-  <div class="card mt-5 m-" style="width: 20rem;">
-    <div class="card-body">
-      <h5 class="card-title">Data Profil</h5>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-        content.</p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
-    </div>
-  </div>
-</div>  
+
+
+</body>
+
+</html>
+<div class="container-fluid"> 
+        <table class="table table-bordered mt-5">
+            <tr>
+                <th>ID SISWA</th>
+                <th>NAMA SISWA</th>
+                <th>EMAIL</th>
+                <th>GAMBAR</th>
+                <th>ROLE</th>
+                <th>ACTIVE</th>
+                <th>DATE_CREATED</th>
+            </tr>
+            
+            <?php
+            $no= 1;
+            foreach($siswa as $swa) : ?>
+ 
+            <tr>
+                <td><?php echo $no++ ;?></td>
+                <td><?php echo $swa->name ?></td>
+                <td><?php echo $swa->email ?></td>
+                <td><?php echo $swa->image ?></td>
+                <td><?php echo $swa->role_id ?></td>
+                <td><?php echo $swa->is_active ?></td>
+                <td><?php echo $swa->date_created ?></td>
+            </tr>
+
+            <?php endforeach; ?>
+
+        </table>
 </div>
-</div>
-</center>
