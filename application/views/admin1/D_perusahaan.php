@@ -55,7 +55,7 @@
 </html>
 
 <div class="container-fluid"> 
-        <table class="table table-bordered mt-5 text-white">
+        <table class="table table-bordered mt-5 text-dark">
             <tr>
                 <th>ID TEMPAT</th>
                 <th>ALAMAT TEMPAT</th>

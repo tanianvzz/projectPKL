@@ -24,7 +24,7 @@
                 </ul>
                 <form class="d-flex my-2 my-lg-0 m-5">
                     <button class="btn btn-outline-primary m-2 my-2 my-sm-0" type="submit">Login</button>
-                    <a href="user1"><button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Back To Home</button></a>
+                    <a href="<?=base_url('auth/logout'); ?>"><button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Back To Home</button></a>
                 </form>
             </div>
         </nav>

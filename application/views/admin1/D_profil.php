@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
 
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
@@ -13,20 +14,21 @@
 
 </head>
 <style type="text/css">
-        body{
-            background-image: url('../../asset/img/bg.jpg');
-            background-size: 1365px;
-            margin-top: 10px;
-            margin-left: 20px;
-        }
-    </style>
+  body {
+    background-image: url('../../asset/img/bg.jpg');
+    background-size: 1365px;
+    margin-top: 10px;
+    margin-left: 20px;
+  }
+</style>
+
 <body>
 
   <header>
     <nav class="navbar navbar-expand-md navbar-dark mt-">
       <div class="container-fluid">
 
-        
+
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
           aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -45,7 +47,7 @@
           </ul>
           <form class="d-flex">
             <input class="form-control mr-2" type="search" placeholder="Search" aria-label="Search">
-            <a href="<?php echo base_url('admin/Admin');?>" class="btn btn-outline-primary" type="submit">Back</a>
+            <a href="<?php echo base_url('admin/Admin'); ?>" class="btn btn-outline-primary" type="submit">Back</a>
 
           </form>
 
@@ -55,39 +57,68 @@
   </header>
 
 
-
+ 
 
 
 </body>
 
 </html>
-<div class="container-fluid"> 
-        <table class="table table-bordered mt-5">
-            <tr>
-                <th>ID SISWA</th>
-                <th>NAMA SISWA</th>
-                <th>EMAIL</th>
-                <th>GAMBAR</th>
-                <th>ROLE</th>
-                <th>ACTIVE</th>
-                <th>DATE_CREATED</th>
-            </tr>
-            
-            <?php
-            $no= 1;
-            foreach($siswa as $swa) : ?>
- 
-            <tr>
-                <td><?php echo $no++ ;?></td>
-                <td><?php echo $swa->name ?></td>
-                <td><?php echo $swa->email ?></td>
-                <td><?php echo $swa->image ?></td>
-                <td><?php echo $swa->role_id ?></td>
-                <td><?php echo $swa->is_active ?></td>
-                <td><?php echo $swa->date_created ?></td>
-            </tr>
+<div class="container-fluid">
+  <table class="table table-bordered mt-5">
+    <tr>
+      <th>ID SISWA</th>
+      <th>NAMA SISWA</th>
+      <th>EMAIL</th>
+      <th>JENIS_KELAMIN</th>
+      <th>NAMA_SEKOLAH</th>
+      <th>ALAMAT_SEKOLAH</th>
+      <th>NIS</th>
+      <th>TGL_LAHIR</th>
+      <th>JURUSAN</th>
+      <th>NO_PEMBIMBING</th>
+    </tr>
 
-            <?php endforeach; ?>
+    <?php
+    $no = 1;
+    foreach ($profil as $prf): ?>
 
-        </table>
+      <tr>
+        <td>
+          <?php echo $no++; ?>
+        </td>
+        <td>
+          <?php echo $prf->name ?>
+        </td>
+        <td>
+          <?php echo $prf->email ?>
+        </td>
+        <td>
+          <?php echo $prf->image ?>
+        </td>
+        <td>
+          <?php echo $prf->jenis_kelamin ?>
+        </td>
+        <td>
+          <?php echo $prf->nama_sekolah ?>
+        </td>
+        <td>
+          <?php echo $prf->alamat_sekolah ?>
+        </td>
+        <td>
+          <?php echo $prf->nis ?>
+        </td>
+        <td>
+          <?php echo $prf->tgl_lahir ?>
+        </td>
+        <td>
+          <?php echo $prf->jurusan ?>
+        </td>
+        <td>
+          <?php echo $prf->no_pembimbing ?>
+        </td>
+      </tr>
+
+    <?php endforeach; ?>
+
+  </table>
 </div>

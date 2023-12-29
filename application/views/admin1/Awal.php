@@ -11,20 +11,20 @@
     integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
     crossorigin="anonymous"></script>
 
-</head>
-
-<body>
-
-  <header>
   <style type="text/css">
-        body{
-            background-image: url('../asset/img/U.jpg');
+        .body1{
+            background-image: url('../asset/img/U.jpg') !important;
             background-size: 1365px;
             margin-top: 10px;
             margin-left: 20px;
         }
     </style>
-    <nav class="navbar navbar-expand-md navbar-dark mt-">
+</head>
+
+<body class="body1">
+
+  <header>
+    <nav class="navbar navbar-expand-md navbar-dark">
       <div class="container-fluid">
 
         
@@ -46,7 +46,7 @@
           </ul>
           <form class="d-flex">
             <input class="form-control mr-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-primary" type="submit">logout</button>
+            <a class="btn btn-outline-primary" type="submit" href="<?=base_url('Auth/logout'); ?>">logout</a>
           </form>
 
         </div>
@@ -85,7 +85,7 @@
       <h5 class="card-title">Data Profil</h5>
       <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
         content.</p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
+        <a href="<?php echo base_url('admin/Admin/pr');?>" class="btn btn-primary">Go somewhere</a>
     </div>
   </div>
 </div>  
