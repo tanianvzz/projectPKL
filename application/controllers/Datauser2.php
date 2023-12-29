@@ -13,40 +13,52 @@ class Datauser2 extends CI_Controller {
 	}
 	
 	public function index()
-{
+{       
     $data['title'] = 'U Find';
-    $data['user'] = $this->M_user2->SemuaData();
-    $isSubmitted = $this->session->userdata('isiData_submitted');
+    $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+    $data['data'] = $this->M_user2->SemuaData();
+    
+    $cekkolom = array('image', 'jenis_kelamin', 'nama_sekolah', 'alamat_sekolah', 'nis', 'tgl_lahir', 'jurusan', 'no_pembimbing');
+    $userData = $this->db->get_where('data_member', ['email' => $this->session->userdata('email')])->row_array();
+    $isNull = false;
 
-    // $data['data'] = $this->M_user2->SemuaDataUser();
+    foreach ($cekkolom as $kolom) {
+        if (!array_key_exists($kolom, $userData) || $userData[$kolom] === null) {
+            $isNull = true;
+            break;
+        }
+    }
 
-    if ($this->input->post('submit_button_name')) {
+    if ($isNull) {
+
         $this->load->view('user2/header', $data);
         $this->load->view('user2/isi_Data', $data);
         $this->load->view('user2/footer');
-        $gambar = "";
-        $data = array(
-            'id' => $this->input->post('id_user'),
-            'name' => $this->input->post('name'),
-            'email' => $this->input->post('email'),
-            'jenis_kelamin' => $this->input->post('jenis_kelamin'),
-            'nama_sekolah' => $this->input->post('nama_sekolah'),
-            'alamat_sekolah' => $this->input->post('alamat_sekolah'),
-            'nis' => $this->input->post('nis'),
-            'tgl_lahir' => $this->input->post('tgl_lahir'),
-            'jurusan' => $this->input->post('jurusan'),
-            'no_pembimbing' => $this->input->post('no_pembimbing'),
-            'image' => $gambar,
-        );
-
-        $this->session->set_userdata('isiData_submitted', true);
-        $this->M_user2->data_member($data);
-        redirect('Datauser2/myprofile');
     } else {
         redirect('datauser2/myprofile');
     }
 }
+
 	
+public function isi_data(){
+	$gambar= 'default.jpg';
+	$data = array(
+		// 'id_user' => $this->input->post('id_user'),
+		// 'name' => $this->input->post('name'),
+		// 'email' => $this->input->post('email'),
+		'jenis_kelamin' => $this->input->post('jenis_kelamin'),
+		'nama_sekolah' => $this->input->post('nama_sekolah'),
+		'alamat_sekolah' => $this->input->post('alamat_sekolah'),
+		'nis' => $this->input->post('nis'),
+		'tgl_lahir' => $this->input->post('tgl_lahir'),
+		'jurusan' => $this->input->post('jurusan'),
+		'no_pembimbing' => $this->input->post('no_pembimbing'),
+		'image' => $gambar,
+	);
+	
+	$this->M_user2->data_member($data);
+	redirect('Datauser2/myprofile');
+}
 	public function Myprofile()
 	{
 		// if (!$this->session->userdata('logged_in')) {
@@ -61,11 +73,6 @@ class Datauser2 extends CI_Controller {
 			$this->load->view('user2/footer',$data);
 		
 	}
-	public function update_profil2()
-    {
-		
-    }
-
 	public function find(){
 		$data['title'] = ' U Find';
         $data['user']= $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
@@ -105,10 +112,10 @@ class Datauser2 extends CI_Controller {
         $this->db->insert('pengajuan', $data);
       // Set session bahwa pengguna telah mengajukan
 	  $this->session->set_userdata('pengajuan_submitted', true);
-	  echo '<script>alert("Pengajuan berhasil dilakukan.");</script>';
+	  $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert"> pengajuan berhasil dilakukan </div>');
 	  redirect('Datauser2/find');
   } else {
-	echo '<script>alert("Anda Sudah Mengajukan.");</script>';
+	$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Anda sudah melakukan pengajuan </div>');
 	redirect('Datauser2/find');
   }
 }

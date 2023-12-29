@@ -1,53 +1,52 @@
 <div class="container-fluid ">
-    <form method="post" action="<?= base_url(). 'Post/tambah_post';?>" enctype="multipart/form-data"
-        class=" text-light rounded m-5 bg-dark">
-        <div class="form-header bg-secondary rounded text-dark">
-            <h3 class="text-center pt-3">ISI FORM DIBAWAH INI!!</h3>
-            <hr>
-        </div>
+    <center>
+        <form method="post" action="<?= base_url(). 'Post/tambah_post';?>" enctype="multipart/form-data"
+        class=" text-light rounded m-5 bg-dark w-75" >
+        <h2 class="m-4 pt-4 text-center">Tambah Post Perusahaan</h2><hr>
         <div class="row">
             <div class="col">
                 <div class="form-group mb-3 m-3">
-                    <strong>Nama Persusahaan :</strong>
+                    <strong class=" d-flex justify-content-start">Nama Persusahaan :</strong>
                     <input type="text" class="form-control mb-3 mt-2" name="nama_tempat" required=""
                         placeholder="nama perusahaan">
                 </div>
             </div>
             <div class="col">
                 <div class="form-group mb-3 m-3">
-                    <strong>Alamat Persusahaan :</strong>
+                    <strong class=" d-flex justify-content-start">Alamat Persusahaan :</strong>
                     <input type="text" class="form-control mb-3 mt-2" name="alamat_tempat" required=""
                         placeholder="alamat perusahaan">
                 </div>
             </div>
         </div>
-        <div class="form-group mb-3 m-3">
-            <strong>No.Telp :</strong>
-            <input type="text" class="form-control mb-3 mt-2" name="no_telp" required="" placeholder="no_telp">
+        <div class="row">
+            <div class="col">
+                <div class="form-group mb-3 m-3">
+                    <strong class=" d-flex justify-content-start">No.Telp :</strong>
+                    <input type="text" class="form-control mb-3 mt-2" name="no_telp" required="" placeholder="telepon">
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group mb-3 m-3">
+                    <strong class=" d-flex justify-content-start">Jurusan :</strong>
+                    <input type="text" class="form-control mb-3 mt-2" name="jurusan" required="" placeholder="Jurusan">
+                </div>
+            </div>
         </div>
-        <div class="form-group mb-3 m-3">
-            <strong>Jurusan :</strong>
-            <select class="form-control mb-3" name="jurusan" placeholder="jurusan">
-                <la>-- Jurusan --</option>
-                    <option>MultiMedia</option>
-                    <option>Rekayasa Perangkat Lunak</option>
-                    <option>Tata Boga</option>
-                    <option>Kecantikan</option>
-                    <option>TKJ</option>
-                    <option>Akutansi</option>
-                    <option>Perhotelan</option>
-            </select>
-        </div>
-        <div class="form-group mb-3 m-3">
-            <strong>Deskripsi :</strong>
-            <input type="text" class="form-control mb-3 mt-2" name="deskripsi" required="" placeholder="deskripsi">
+        <div class="form-group mb-3 m-3 ">
+            <strong class=" d-flex justify-content-start">Deskripsi :</strong>
+            <textarea type="text" class="form-control mb-3 mt-2" name="deskripsi" required=""
+                placeholder="deskripsi"></textarea>
         </div>
 
-        <div class="form-group mb-2 m-3">
-            <strong>Gambar</strong><br>
-            <input class="form-control w-25" type="file" id="formFileMultiple" multiple name="gambar" class="btn btn-light" required="">
+        <div class="form-group mt-5 m-3 d-flex justify-content-start">
+            <strong class=" d-flex justify-content-start ">Gambar</strong><br>
+            <input class="form-control w-25 ms-3" type="file" id="formFileMultiple" name="gambar"
+                class="btn btn-light" required="">
         </div>
-        <button type="submit" class="btn btn-secondary m-4 text-dark"><strong>tambah data</strong></button>
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-light m-3 "><strong>tambah data</strong></button>
+        </div>
     </form>
-
+    </center>
 </div>
