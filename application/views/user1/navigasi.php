@@ -16,6 +16,10 @@
                 <li class="nav-item">
                     <a class="nav-link" href="<?= base_url('Profile'); ?>">My Profile</a>
                 </li>
+                <div class="vr"></div>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?= base_url('Multiple'); ?>">Approve Peserta</a>
+                </li>
             </ul>
             <i class="fa-solid fa-right-from-bracket mt-1 p-1"></i>
             <a class="nav-link " href="<?= base_url('Auth/logout')?>">Logout</a>
