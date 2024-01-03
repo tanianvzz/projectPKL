@@ -1,44 +1,53 @@
-<div class="container-fluid mt-5">
+<div class="container-fluid mt-3">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">
-                    Data Multiple Users
-                </div>
-                <div class="col-md-12">
-                    <?php
-                        $pesan = $this->session->flashdata('pesan');
-                        if($pesan)
-                        {
+                 <center><strong class="mb-3">Pengajuan peserta </strong></center>
+                <form method="post" action="<?= base_url('multiple/Persetujuan/') ?>">
+                    <div class="card-bod text-center mt-4">
+                        <table class="table table-striped">
+                            <tr>
+                                <th> <strong>Data Member</strong></th>
+                                <th> <strong>Status</strong></th>
+                                <th> <strong>Persetujuan</strong></th>
+                            </tr>
+                            <?php 
+                                $i=1;
+                                foreach ($kode_area as $row) { ?>
+                                <input type="hidden" name="kode[<?= $i ?>]" value="<?= $row->kode ?>">
+                                    <tr>
+                                        <td><?= $row->id ?></td>
+                                        <td>
+                                            <?php 
+                                                if($row->status == 0)
+                                                {
+                                                    ?>
+                                                    <span class="badge bg-warning">Pending</span>
+                                                    <?php
+                                                }
+                                                else
+                                                {
+                                                   echo $row->status == 1 ? '<span class="badge bg-success">Diterima</span>' : '<span class="badge bg-danger">Ditolak</span>';
+                                                }
+                                            ?>
+                                        </td>
+                                        <td>
+                                            <label>
+                                                <input type="radio" name="status[<?= $i ?>]" value="1" required> Diterima
+                                            </label>
+                                            <label>
+                                                <input type="radio" name="status[<?= $i ?>]" value="2"> Ditolak
+                                            </label>
+                                        </td>
+                                    </tr>
+                                    <?php
+                                    $i++;
+                                }
                             ?>
-                    <div class="alert alert-success">
-                        <?= $pesan ?>
-                    </div>
-                    <?php
-                        }
-                    ?>
-                </div>
-                <div class="card-body">
-                    <table class="table table-striped">
-                        <tr class="text-center">
-                            <th>Name</th>
-                            <th>Action</th>
-                        </tr>
-                        <?php if (!empty($user)): ?>
-                            <tr class="text-center">
-                            <td><?= $user['name']?></td>
-                            <td>
-                                <a href="<?= base_url('multiple/edit/'). $user['id'] ?>"
-                                    class="btn btn-success btn-sm">Approval</a>
-                            </td>
-
-                        </tr>
-                        <?php endif; ?>
-                    </table>
-                </div>
-                <div class="card-footer">
-                    Page
-                </div>
+                        </table>
+                            </div>
+                </form>
             </div>
         </div>
     </div>

@@ -28,6 +28,7 @@
 
 <!-- Page level custom scripts -->
 <script src="<?= base_url('assets/'); ?>js/demo/datatables-demo.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://datatables.net/media/js/mode.js?_=b8423bc574e3400d0f4946e05faad4f1"></script>
 <script src="https://datatables.net/media/js/site.js?_=b8423bc574e3400d0f4946e05faad4f1" data-domain="datatables.net"
     data-api="https://plausible.sprymedia.co.uk/api/event"></script>
