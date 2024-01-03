@@ -26,8 +26,7 @@ class M_user1 extends CI_Model
     }
     public function tambah_profile($data)
     {
-        $this->db->insert('company_profiles', $data);
-        
+        $this->db->insert('company_profiles', $data); 
     }
     public function detail($id_tempat)
     {
@@ -40,7 +39,7 @@ class M_user1 extends CI_Model
     } 
     public function tambah_data($data)
     {
-        $this->db->insert('tb_tempatpkl',$data);
+       return $this->db->insert('tb_tempatpkl',$data);
     }
     public function edit_barang($where,$table)
     {
