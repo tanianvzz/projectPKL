@@ -91,24 +91,61 @@ class M_user2 extends CI_Model
         return $result;
 
     }
-    public function CekData()
-    {
-         $userData = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
-         if ($userData) {
-             $additionalData = $this->db->get_where('data_member', ['id_user' => $userData['id']])->row_array();
-             return $additionalData;
-         }
-     }
+    
+    
 
-     public function cekKolom()
-     {
-
-         $kolomYangDiperiksa = array( 'image', 'jenis_kelamin', 'nama_sekolah', 'alamat_sekolah', 'nis', 'tgl_lahir', 'jurusan', 'no_pembimbing');
-         $userData = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
- 
-             if ($userData[$kolomYangDiperiksa]== null) {
-                 
-             }
-        }
+    public function ajukan_pengajuan($data) {
+        $this->db->insert('pengajuan', $data);
+        $id_pengajuan = $this->db->insert_id(); // Mengembalikan ID pengajuan yang baru saja di-insert
+    
+        // Mengambil ID pengguna secara otomatis berdasarkan logika tertentu
+        $id_user_penerima = $this->get_id_user_by_criteria(); // Sesuaikan dengan logika Anda
+    
+        // Menambahkan penerima pengajuan
+        $this->tambah_penerima_pengajuan($id_pengajuan, $id_user_penerima);
+    
+        return $id_pengajuan;
+    }
+    
+    private function get_id_user_by_criteria() {
+        // Contoh logika untuk memilih pengguna berdasarkan kriteria
+        $criteria = array(
+            'role_id' => '2',
+            'is_active' => 1 // Misalnya, pengguna harus memiliki status 'aktif'
+        );
+    
+        $query = $this->db->get_where('user', $criteria, 1);
+        $result = $query->row();
+        return ($result) ? $result->id : NULL;
+    }
+    
+    private function tambah_penerima_pengajuan($id_pengajuan, $id_user_penerima) {
+        $data = array(
+            'id_pengajuan' => $id_pengajuan,
+            'id_user_penerima' => $id_user_penerima
+        );
+        $this->db->insert('penerima_pengajuan', $data);
+    }
+    
         
     }
+
+    // public function CekData()
+    // {
+    //      $userData = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+    //      if ($userData) {
+    //          $additionalData = $this->db->get_where('data_member', ['id_user' => $userData['id']])->row_array();
+    //          return $additionalData;
+    //      }
+    //  }
+
+    //  public function cekKolom()
+    //  {
+
+    //      $kolomYangDiperiksa = array( 'image', 'jenis_kelamin', 'nama_sekolah', 'alamat_sekolah', 'nis', 'tgl_lahir', 'jurusan', 'no_pembimbing');
+    //      $userData = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+ 
+    //          if ($userData[$kolomYangDiperiksa]== null) {
+                 
+    //          }
+    //     }
