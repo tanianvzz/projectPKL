@@ -49,6 +49,14 @@ class M_user2 extends CI_Model
         // Mengembalikan ID terakhir yang dimasukkan
         return $this->db->insert_id();
     }
+    public function tambahDataCompany($data)
+    {
+        // Melakukan operasi insert ke dalam tabel data_member
+        $this->db->insert('company_profiles', $data);
+
+        // Mengembalikan ID terakhir yang dimasukkan
+        return $this->db->insert_id();
+    }
     public function SemuaDataPost()
     {
         return $this->db->get('tb_tempatpkl');
