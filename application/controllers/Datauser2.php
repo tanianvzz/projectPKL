@@ -94,9 +94,8 @@ public function isi_data(){
 
    public function ajukan()
 {
-	
-	$combinedData = $this->M_user2->pengajuan();
-	$isSubmitted = $this->session->userdata('pengajuan_submitted');
+    $combinedData = $this->M_user2->pengajuan();
+    $isSubmitted = $this->session->userdata('pengajuan_submitted');
 
     if ($combinedData && !$isSubmitted) {
         $data = [
@@ -109,16 +108,19 @@ public function isi_data(){
             'no_pembimbing' => $combinedData['no_pembimbing'],
         ];
 
-        $this->db->insert('pengajuan', $data);
-      // Set session bahwa pengguna telah mengajukan
-	  $this->session->set_userdata('pengajuan_submitted', true);
-	  $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert"> pengajuan berhasil dilakukan </div>');
-	  redirect('Datauser2/find');
-  } else {
-	$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Anda sudah melakukan pengajuan </div>');
-	redirect('Datauser2/find');
-  }
+        $id_pengajuan = $this->M_user2->ajukan_pengajuan($data);
+
+        // Set session bahwa pengguna telah mengajukan
+        $this->session->set_userdata('pengajuan_submitted', true);
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Pengajuan berhasil dilakukan</div>');
+        redirect('Datauser2/find');
+    } else {
+        $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Anda sudah melakukan pengajuan</div>');
+        redirect('Datauser2/find');
+    }
 }
+
+
 	
 	public function logout(){
         $this->session->unset_userdata('email');
