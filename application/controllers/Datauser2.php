@@ -13,35 +13,45 @@ class Datauser2 extends CI_Controller {
 	}
 	
 	public function index()
-{       
+{
     $data['title'] = 'U Find';
     $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
     $data['data'] = $this->M_user2->SemuaData();
-    
-    $cekkolom = array('image', 'jenis_kelamin', 'nama_sekolah', 'alamat_sekolah', 'nis', 'tgl_lahir', 'jurusan', 'no_pembimbing');
-    $userData = $this->db->get_where('data_member', ['email' => $this->session->userdata('email')])->row_array();
-    $isNull = false;
 
-    foreach ($cekkolom as $kolom) {
-        if (!array_key_exists($kolom, $userData) || $userData[$kolom] === null) {
-            $isNull = true;
-            break;
-        }
-    }
+    $userData = $this->M_user2->getUserDataByEmail($this->session->userdata('email'));
+    $isNull = $this->checkNullColumns($userData);
 
     if ($isNull) {
-
         $this->load->view('user2/header', $data);
         $this->load->view('user2/isi_Data', $data);
         $this->load->view('user2/footer');
     } else {
-        redirect('datauser2/myprofile');
+        redirect(base_url('datauser2/myprofile'));
     }
 }
 
+private function checkNullColumns($userData)
+{
+    if ($userData === null) {
+        return true; // Handle the case where user data is null
+    }
+
+    $checkColumns = ['jenis_kelamin', 'nama_sekolah', 'alamat_sekolah', 'nis', 'tgl_lahir', 'jurusan', 'no_pembimbing'];
+
+    foreach ($checkColumns as $column) {
+        if (!array_key_exists($column, $userData) || $userData[$column] === null) {
+            return true;
+        }
+    }
+
+    return false;
+}
+
+
+
 	
 public function isi_data(){
-	$gambar= 'default.jpg';
+	    
 	$data = array(
 		// 'id_user' => $this->input->post('id_user'),
 		// 'name' => $this->input->post('name'),
@@ -53,7 +63,6 @@ public function isi_data(){
 		'tgl_lahir' => $this->input->post('tgl_lahir'),
 		'jurusan' => $this->input->post('jurusan'),
 		'no_pembimbing' => $this->input->post('no_pembimbing'),
-		'image' => $gambar,
 	);
 	
 	$this->M_user2->data_member($data);
