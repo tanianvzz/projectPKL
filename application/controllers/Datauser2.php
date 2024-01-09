@@ -46,9 +46,6 @@ private function checkNullColumns($userData)
 
     return false;
 }
-
-
-
 	
 public function isi_data(){
 	    
