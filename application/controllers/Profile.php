@@ -12,7 +12,7 @@ class Profile extends CI_Controller {
     public function index() {
         $data['title'] = "Profile";
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
-        $data['tempat'] = $this->M_user1->tampil_data()->result_array();
+        $data['tempat'] = $this->M_user1->tampil_data1();
         $data['profiles'] = $this->M_user1->get_profiles_by_email();
     
         $cekkolom = array('description', 'address', 'phone', 'major');
@@ -39,7 +39,7 @@ class Profile extends CI_Controller {
         
         $data['title'] = "Profile";
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
-        $data['tempat'] = $this->M_user1->tampil_data()->result_array();
+        $data['tempat'] = $this->M_user1->tampil_data1(['id_user' => $this->session->userdata('id')])->result_array();
         $data['profiles'] = $this->M_user1->get_profiles_by_email();
         $this->load->view('user1/navigasi', $data);
         $this->load->view('user1/header', $data);
@@ -53,7 +53,6 @@ class Profile extends CI_Controller {
         $major = $this->input->post('major');
         $description = $this->input->post('description');
         $data = array(
-            'id_user' => $id_user,
             'name' => $name,
             'address' => $address,
             'phone' => $phone,

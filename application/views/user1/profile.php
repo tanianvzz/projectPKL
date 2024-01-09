@@ -6,13 +6,12 @@
                 <div class="col-lg-4">
                     <div class="card mb-4">
                         <div class="card-body text-center">
-                        <?php foreach ($users as $user): ?>
     <img src="<?= base_url('asset/img/profile/default.png') ?>" alt="avatar"
                                 class="rounded-circle img-fluid" style="width: 150px;">
-                            <h5 class="my-3"><?= $user->name ?></h5>
-                            <p class="text-muted mb-1"><?= $user->email ?></p>
+                            <h5 class="my-3"><?= $profiles['name']; ?></h5>
+                            <p class="text-muted mb-1"><?= $profiles['email']; ?></p>
                             <p class="card-text"><small class="text-body-secondary">member since
-                                    <?= date('d-m-Y', $user->date_created); ?></small></p>
+                                    <?= date('d-m-Y', $profiles['date_created']); ?></small></p>
                             <div class="d-flex justify-content-center mb-2">
                                 <!-- Button trigger modal -->
                                 <button type="button" class="btn btn-primary" data-bs-toggle="modal"
@@ -20,9 +19,6 @@
                                     add profile data
                                 </button>
                             </div>
-<?php endforeach; ?>
-                            
-
                             <!-- Modal -->
                             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                                 aria-hidden="true">
@@ -86,11 +82,7 @@
                     <div class="card mb-4">
                         <div class="card-body ">
                             <div class="row">
-<<<<<<<<< Temporary merge branch 1
                                 <p hidden name="id_user"><?= $profiles['id_user']?></p>
-=========
-                                <p hidden name="user_id"><?= $profiles['id_user']?></p>
->>>>>>>>> Temporary merge branch 2
                                 <div class="col-sm-3">
                                     <p class="mb-0">Nama Perusahaan</p>
                                 </div>
@@ -135,12 +127,7 @@
                                 </div>
                             </div>
                         </div>
-                        <?php else: ?>
-                        <div class="alert alert-warning" role="alert">
-                            Harap tambahkan data perusahaan terlebih dahulu.
-                        </div>
                     </div>
-                    <?php endif; ?>
                 </div>
                 <div class="row">
                     <div class="col-md-12">
