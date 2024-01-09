@@ -34,4 +34,5 @@ class Admin extends CI_Controller {
         $this->load->view('admin1/D_profil', $data);
         $this->load->view('admin1/footer');
     }
+    
 }

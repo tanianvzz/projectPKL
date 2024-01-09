@@ -7,26 +7,31 @@ class M_user1 extends CI_Model
         parent::__construct();
         $this->load->database();
     }
-
     public function tampil_data()
     {
-        return $this->db->get('tb_tempatpkl');
+
+        $query = $this->db->get('tb_tempatpkl');
+        return $query;
+    }
+    public function tampil_data1($id)
+    {
+        $this->db->where('id_user',$id);
+        $query = $this->db->get('tb_tempatpkl');
+        return $query;
     }
     public function tampil_data2()
     {
         return $this->db->get('company_profiles');
     }
-    public function tampil_datauser()
+    public function tampil_datauser($email)
     {
-        return $this->db->get('user');
+        $this->db->where('email',$email);
+        $query = $this->db->get('user');
+        return $query;
     }
-    public function tampil_data1($where, $table)
+    public function tambah_profile($data,$where)
     {
-        return $this->db->get_where($where, $table);
-    }
-    public function tambah_profile($data)
-    {
-        $this->db->insert('company_profiles', $data); 
+        $this->db->insert('company_profiles', $data,$where); 
     }
     public function detail($id_tempat)
     {
@@ -41,12 +46,15 @@ class M_user1 extends CI_Model
     {
        return $this->db->insert('tb_tempatpkl',$data);
     }
-    public function edit_barang($where,$table)
+
+    public function edit_barang($id)
     {
-       return $this->db->get_where($table,$where);
+       return $this->db->get_where('tb_tempatpkl', ['id_tempat'=> $id]);
     }
+
     public function update_data($table,$data,$where)
     {
+        
             $this->db->where($where);
             $this->db->update($table,$data);
     }
@@ -60,7 +68,7 @@ class M_user1 extends CI_Model
 
         $this->db->select('user.*, company_profiles.*');
         $this->db->from('user');
-        $this->db->join('company_profiles', 'user.id = company_profiles.user_id', 'left');
+        $this->db->join('company_profiles', 'user.id = company_profiles.id_user', 'left');
         $this->db->where('user.email', $email); // Assuming $email is the email you want to match
   
         $query = $this->db->get();
