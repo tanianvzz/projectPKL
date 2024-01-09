@@ -85,9 +85,8 @@
                 <div class="col-lg-8">
                     <div class="card mb-4">
                         <div class="card-body ">
-                            <?php if (!empty($profiles)): ?>
                             <div class="row">
-                                <p hidden name="id_user"><?= $profiles['id_user']?></p>
+                                <p hidden name="user_id"><?= $profiles['id_user']?></p>
                                 <div class="col-sm-3">
                                     <p class="mb-0">Nama Perusahaan</p>
                                 </div>
@@ -132,12 +131,6 @@
                                 </div>
                             </div>
                         </div>
-                        <?php else: ?>
-                        <div class="alert alert-warning" role="alert">
-                            Harap tambahkan data perusahaan terlebih dahulu.
-                        </div>
-                    </div>
-                    <?php endif; ?>
                 </div>
                 <div class="row">
                     <div class="col-md-12">

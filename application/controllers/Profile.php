@@ -7,39 +7,39 @@ class Profile extends CI_Controller {
         parent::__construct();
         $this->load->helper('url_helper');
         $this->load->model('M_user1');
-        
-
     }
 
     public function index() {
         $data['title'] = "Profile";
         $data['company']= $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
-        $data['tempat'] = $this->M_user1->tampil_data1($this->session->userdata('id'))->result_array();
+        $data['tempat'] = $this->M_user1->tampil_data()->result_array();
         $data['profiles'] = $this->M_user1->get_profiles_by_email();
-        $data['users'] = $this->M_user1->tampil_datauser($this->session->userdata('email'))->result();
+        $data['user'] = $this->M_user1->tampil_datauser()->row_array();
         $this->load->view('user1/navigasi',$data);
 		$this->load->view('user1/header',$data);
         $this->load->view('user1/profile', $data);
-        $this->load->view('user1/footer', $data);
-
-    }
+        $this->load->view('user1/footer', $data);		
+	}
     public function tambah_aksi(){
         
-		$where = array('id_user' => $this->session->userdata('id'));
+        $user_id = "61";
+		// $where = array('user_id' => $user_id);
         $name = $this->input->post('name');
         $address = $this->input->post('address');
         $phone = $this->input->post('phone');
         $major = $this->input->post('major');
         $description = $this->input->post('description');
         $data = array(
-            'id_user' => $id_user,
+            'user_id' => $user_id,
             'name' => $name,
             'address' => $address,
             'phone' => $phone,
             'major' => $major,
             'description' => $description,
         );
-        $this->M_user1->tambah_profile($data,$where, 'company_profiles');
+        $this->M_user1->tambah_profile($data, 'company_profiles');
+        // var_dump($data);
+        // die();
         redirect('Profile');
     }
 }

@@ -74,23 +74,10 @@ class M_user2 extends CI_Model
             return false;
         }
     }
-    public function pengajuan()
+    public function getUserDataByEmail($email)
     {
-        $email = $this->session->userdata('email');
-
-        // Query untuk mengambil data pengguna dari kedua tabel berdasarkan email
-        $this->db->select('user.*, data_member.*');
-        $this->db->from('user');
-        $this->db->join('data_member', 'user.id = data_member.id_user', 'left'); // Sesuaikan kriteria join berdasarkan hubungan antara kedua tabel
-        $this->db->where('user.email', $email);
-
-        $query = $this->db->get();
-        $result = $query->row_array();
-
-
-        return $result;
-
-    }
+    return $this->db->get_where('data_member', ['email' => $email])->row_array();
+}
     
     
 
@@ -127,7 +114,24 @@ class M_user2 extends CI_Model
         $this->db->insert('penerima_pengajuan', $data);
     }
     
-        
+    
+    public function pengajuan()
+    {
+        $email = $this->session->userdata('email');
+
+        // Query untuk mengambil data pengguna dari kedua tabel berdasarkan email
+        $this->db->select('user.*, data_member.*');
+        $this->db->from('user');
+        $this->db->join('data_member', 'user.id = data_member.id_user', 'left'); // Sesuaikan kriteria join berdasarkan hubungan antara kedua tabel
+        $this->db->where('user.email', $email);
+
+        $query = $this->db->get();
+        $result = $query->row_array();
+
+
+        return $result;
+
+    }
     }
 
     // public function CekData()
