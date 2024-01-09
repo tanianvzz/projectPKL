@@ -22,8 +22,9 @@
         <div class="row">
             <div class="col">
                 <div class="form-group mb-3 m-3">
-                    <strong class=" d-flex justify-content-start">No.Telp :</strong>
-                    <input type="text" class="form-control mb-3 mt-2" name="no_telp" required="" placeholder="telepon">
+                    <strong class=" d-flex justify-content-start">No Telp :</strong>
+                    <input type="text"  class="form-control mb-3 mt-2"  name="no_telp" placeholder="Nomor Telepon" required>
+
                 </div>
             </div>
             <div class="col">
