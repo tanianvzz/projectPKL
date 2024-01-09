@@ -6,12 +6,13 @@
                 <div class="col-lg-4">
                     <div class="card mb-4">
                         <div class="card-body text-center">
-                            <img src="<?= base_url('asset/img/profile/default.png') ?>" alt="avatar"
+                        <?php foreach ($users as $user): ?>
+    <img src="<?= base_url('asset/img/profile/default.png') ?>" alt="avatar"
                                 class="rounded-circle img-fluid" style="width: 150px;">
-                            <h5 class="my-3"><?= $user['name']; ?></h5>
-                            <p class="text-muted mb-1"><?= $user['email']; ?></p>
+                            <h5 class="my-3"><?= $user->name ?></h5>
+                            <p class="text-muted mb-1"><?= $user->email ?></p>
                             <p class="card-text"><small class="text-body-secondary">member since
-                                    <?= date('d-m-Y', $user['date_created']); ?></small></p>
+                                    <?= date('d-m-Y', $user->date_created); ?></small></p>
                             <div class="d-flex justify-content-center mb-2">
                                 <!-- Button trigger modal -->
                                 <button type="button" class="btn btn-primary" data-bs-toggle="modal"
@@ -19,6 +20,8 @@
                                     add profile data
                                 </button>
                             </div>
+<?php endforeach; ?>
+                            
 
                             <!-- Modal -->
                             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
@@ -131,34 +134,41 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="card mb-4 mb-md-0">
-                        <div class="card-body p-0">
-                            <h4 class="d-flex justify-content-center m-3 "><strong>Postingan</strong></h4>
-                            <hr>
-                            <ul class="list-group list-group-flush rounded-3">
-                                <?php foreach ($tempat as $tmpt) : ?>
-                                <div class="card m-5 bg-light text-dark" style="">
-                                    <div class="card-body ">
-                                        <h5 class="card-title text-center"><strong><?= $tmpt['nama_tempat']; ?></strong>
-                                        </h5>
-                                        <hr>
-                                        <p class="card-title mb-4 d-flex justify-content-center "><small>Alamat berada
-                                                di
-                                                <?= $tmpt['alamat_tempat']; ?><br>Untuk jurusan
-                                                <?= $tmpt['Jurusan']; ?></small></p>
-                                        <img src="<?= base_url().'/uploads/' .$tmpt['gambar'];?>"
-                                            class="w-75 ms-3 rounded">
-                                        <a href="<?= base_url('Beranda/edit/'). $tmpt['id_tempat']; ?>"
-                                            class="btn btn-outline-primary mt-4">Edit</a>
-                                        <a href="<?= base_url('Beranda/hapus/'). $tmpt['id_tempat']; ?>"
-                                            class="btn btn-danger mt-4">Hapus</a>
+                        <div class="card mb-4">
+                            <div class="card-body p-0">
+                                <div class="card-header mb-4 bg-light">
+                                    <h4 class="d-flex justify-content-center m-3 "><strong>Postingan</strong></h4>
+                                </div>
+                                <ul class="rounded-3 ">
+                                    <?php foreach ($tempat as $tmpt) : ?>
+                                    <div class="card m-2 bg-light text-dark w-50" style="">
+                                        <div class="card-body mb-4   ">
+                                            <h5 class="card-title text-center">
+                                                <strong><?= $tmpt['nama_tempat']; ?></strong>
+                                            </h5>
+                                            <hr>
+                                            <p class="card-title mb-4 d-flex justify-content-center "><small>Alamat
+                                                    berada
+                                                    di
+                                                    <?= $tmpt['alamat_tempat']; ?><br>Untuk jurusan
+                                                    <?= $tmpt['Jurusan']; ?></small></p>
+                                                    <img src="<?= base_url().'/uploads/' .$tmpt['gambar'];?>"  style="width:300px; height:300px;" class="rounded-4">
+                                            <div class="d-flex justify-content-center">
+
+                                                <a href="<?= base_url('Beranda/detail/'). $tmpt['id_tempat']; ?>" class="btn btn-secondary mt-4 ml-4">Detail</a>
+    
+                                                <a href="<?= base_url('Beranda/edit/'). $tmpt['id_tempat']; ?>"
+                                                    class="btn btn-primary mt-4">Edit</a>
+                                                <a href="<?= base_url('Beranda/hapus/'). $tmpt['id_tempat']; ?>"
+                                                    class="btn btn-danger mt-4">Hapus</a>
+                                            </div>
+                                        </div>
+
                                     </div>
 
-                                </div>
-
-                                <?php endforeach; ?>
-                            </ul>
-                        </div>
+                                    <?php endforeach; ?>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>

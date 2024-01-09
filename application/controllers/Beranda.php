@@ -11,8 +11,8 @@ class Beranda extends CI_Controller
 	public function index()
 	{
 		$data['title'] = "Beranda";
-		$data['company'] = $this->db->get_where('user', ['email' => $this->email])->row_array();
-		$data['tempat'] = $this->M_user1->tampil_data()->result_array();
+		$data['company'] = $this->db->get_where('user', ['email' => $this->email])->row_array();        
+        $data['tempat'] = $this->M_user1->tampil_data()->result_array();
 		$this->load->view('user1/navigasi', $data);
 		$this->load->view('user1/header', $data);
 		$this->load->view('user1/Beranda', $data);
@@ -29,36 +29,42 @@ class Beranda extends CI_Controller
 	}
 	
 	public function edit()
-	{
-		$id = $this->uri->segment(3);
-		$data['title'] = 'Edit Data';
-		$where = array('id_tempat' => $id, 'email' => $this->email); // Sesuaikan dengan kolom email yang sesuai
-		$data['tempat'] = $this->M_user1->tampil_data()->row_array();
-		$data['tempat'] = $this->M_user1->edit_barang($where, 'tb_tempatpkl')->result_array();
-		$this->load->view('user1/navigasi', $data);
-		$this->load->view('user1/header', $data);
-		$this->load->view('user1/edit_post', $data);
-		$this->load->view('user1/footer', $data);
-	}
+{
+    $id = $this->uri->segment(4);
+    $data['title'] = 'Edit Data';
+    $data['tempat'] = $this->M_user1->edit_barang($id)->row_array();
+    $this->load->view('user1/navigasi', $data);
+    $this->load->view('user1/header', $data);
+    $this->load->view('user1/edit_post', $data);
+    $this->load->view('user1/footer', $data);
+}
 
-	public function update()
-	{
-    // ...
+public function update()
+{
+    $id_tempat = $this->input->post('id_tempat'); // Pastikan sesuai dengan nama input di form
+    $nama_tempat = $this->input->post('nama_tempat');
+    $alamat_tempat = $this->input->post('alamat_tempat');
+    $Jurusan = $this->input->post('Jurusan');
+
+    $data = array(
+        'nama_tempat' => $nama_tempat,
+        'alamat_tempat' => $alamat_tempat,
+        'Jurusan' => $Jurusan,
+    );
 
     $where = array(
-        'id_tempat' => $id_tempat,
-        'email' => $this->email, // Sesuaikan dengan kolom email yang sesuai
+        'id_tempat' => $id_tempat
     );
 
     $this->M_user1->update_data('tb_tempatpkl', $data, $where);
     redirect('beranda');
-	}
+}
+public function hapus($id_tempat)
+{
 
-	public function hapus($id_tempat)
-	{
-		$where = array('id_tempat' => $id_tempat, 'email' => $this->email); // Sesuaikan dengan kolom email yang sesuai
-		$this->M_user1->hapus_data($where, 'tb_tempatpkl');
-		redirect('beranda');
-	}
+	$where = array('id_tempat' => $id_tempat);
+	$this->M_user1->hapus_data($where,'tb_tempatpkl');
+	redirect('profile');
+}
 	
 }

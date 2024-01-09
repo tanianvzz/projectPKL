@@ -7,10 +7,11 @@ class M_user1 extends CI_Model
         parent::__construct();
         $this->load->database();
     }
-
     public function tampil_data()
     {
-        return $this->db->get('tb_tempatpkl');
+
+        $query = $this->db->get('tb_tempatpkl');
+        return $query;
     }
     public function SemuaData()
     {
@@ -24,11 +25,13 @@ class M_user1 extends CI_Model
         $result = $query->row_array();
         return $result;
     }
-    public function tampil_data1($where, $table)
+    public function tampil_datauser($email)
     {
-        return $this->db->get_where($where, $table);
+        $this->db->where('email',$email);
+        $query = $this->db->get('user');
+        return $query;
     }
-    public function tambah_profile($data)
+    public function tambah_profile($data,$where)
     {
          // Ambil id pengguna dari sesi
          $userId = $this->db->get_where('company_profiles', ['email' => $this->session->userdata('email')])->row_array()['id'];
@@ -53,12 +56,15 @@ class M_user1 extends CI_Model
     {
        return $this->db->insert('tb_tempatpkl',$data);
     }
-    public function edit_barang($where,$table)
+
+    public function edit_barang($id)
     {
-       return $this->db->get_where($table,$where);
+       return $this->db->get_where('tb_tempatpkl', ['id_tempat'=> $id]);
     }
+
     public function update_data($table,$data,$where)
     {
+        
             $this->db->where($where);
             $this->db->update($table,$data);
     }
@@ -74,7 +80,7 @@ class M_user1 extends CI_Model
         $this->db->from('user');
         $this->db->join('company_profiles', 'user.id = company_profiles.id_user', 'left');
         $this->db->where('user.email', $email);
-    
+
         $query = $this->db->get();
         $result = $query->row_array();
     
