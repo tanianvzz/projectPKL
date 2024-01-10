@@ -25,7 +25,7 @@ class Profile extends CI_Controller {
     }
     public function tambah_aksi(){
         
-        $user_id = "59";
+        $user_id = "61";
 		// $where = array('user_id' => $user_id);
         $name = $this->input->post('name');
         $address = $this->input->post('address');

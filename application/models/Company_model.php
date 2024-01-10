@@ -11,8 +11,8 @@ class Company_model extends CI_Model {
     public function get_company_profile() {
         $this->db->select('user.*, company_profiles.*');
         $this->db->from('user');
-        $this->db->join('company_profiles', 'user.id = company_profiles.user_id', 'left');
-        $this->db->where('user.id', 'company_profiles.user_id');
+        $this->db->join('company_profiles', 'user.id = company_profiles.id_user', 'left');
+        $this->db->where('user.id', 'company_profiles.id_user');
         $query = $this->db->get();
         return $query->row_array();
     }
@@ -20,7 +20,7 @@ class Company_model extends CI_Model {
         $this->db->insert('company_profiles', $data);
     }
     public function check_additional_data_exist($user_id) {
-        $this->db->where('user_id', $user_id);
+        $this->db->where('id_user', $user_id);
         $query = $this->db->get('company_profiles');
         return $query->num_rows() > 0;
     }

@@ -42,7 +42,7 @@ class Auth extends CI_Controller
                         $this->session->set_userdata($user);
                         switch($user['role_id']){
                           case 1:
-                            redirect('Admin');
+                            redirect('admin/Admin');
                             break;
                             case 2:
                               redirect('Datauser2');

@@ -1,56 +1,47 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <title>Title</title>
-    <!-- Required meta tags -->
+
     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-    <!-- Bootstrap CSS v5.2.1 -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <title>
+        <?= $title; ?>
+    </title>
 
-        <style type="text/css">
-        body{
-            background-image: url('asset/img/bg1.jpg');
-            background-size: 1365px;
-            margin-top: 20px;
-            margin-left: 20px;
-        }
-    </style>
+    <!-- Custom fonts for this template-->
+    <link href="<?= base_url('assets/'); ?>vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link
+        href="<?= base_url('assets/'); ?>https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
 
+    <!-- Custom styles for this template-->
+    <link href="<?= base_url('assets/'); ?>css/sb-admin-2.min.css" rel="stylesheet">
+        <!-- Custom fonts for this template-->
+        <link href="<?php echo base_url('assets/'); ?>vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="<?php echo base_url('assets/'); ?>css/sb-admin-2.min.css" rel="stylesheet">
+
+    <link href="<?php echo base_url('assets/'); ?>vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link href="<?= base_url('assets/'); ?>haha.png" rel="icon">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.css" />
+    
+    <link rel="shortcut icon" type="image/png" href="/media/images/favicon.png">
+	<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="http://www.datatables.net/rss.xml">
+
+	<link rel="stylesheet" href="https://datatables.net/media/css/site.css?_=644364c5a740835e19f7441d08bc1dbb1">
+	<!--[if lte IE 9]>
+		<link rel="stylesheet" type="text/css" href="/media/css/ie.css" />
+		<![endif]-->
+	<link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.3.0/css/responsive.dataTables.min.css">
 </head>
 
-<body>
-    <header>
-        <!-- place navbar here -->
-        <div class="">
-        <nav class="navbar navbar-expand navbar-light bg">
-             
-                    <ul class="navbar-nav me-auto mt-1 mt-lg-0">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-center" href="#" id="dropdownId" data-bs-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false">Data Siswa</a>
-                        <div class="dropdown-menu" aria-labelledby="dropdownId">
-                            <a class="dropdown-item" href="">Jurusan</a>
-                            <a class="dropdown-item" href="#">Keterangan</a>
-                        </div>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-center" href="#" id="dropdownId" data-bs-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false">Data Perusahaan</a>
-                        <div class="dropdown-menu" aria-labelledby="dropdownId">
-                            <a class="dropdown-item" href="#">Orang Perusahaan</a>
-                            <a class="dropdown-item" href="#">Alamat Perusahaan</a>
-                        </div>
-                    </li>
-                   
-                </ul>
-                <form class="d-flex my-2 my-lg-0 m-5">
-                    <button class="btn btn-outline-primary m-2 my-2 my-sm-0" type="submit">Login</button>
-                    <a href="<?=base_url('Auth/logout');?>"><button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Back To Home</button></a>
-                </form>
-            </div>
-        </nav>
-    </header>
+<body >

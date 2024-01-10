@@ -19,7 +19,7 @@
                                     add profile data
                                 </button>
                             </div>
-
+ 
                             <!-- Modal -->
                             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                                 aria-hidden="true">
@@ -77,41 +77,11 @@
                             </div>
                         </div>
                     </div>
-
-                    <div class="card mb-4 mb-lg-0">
-                        <div class="card-body p-0">
-                            <h4 class="d-flex justify-content-center m-3 "><strong>Postingan</strong></h4>
-                            <hr>
-                            <ul class="list-group list-group-flush rounded-3">
-                                <?php foreach ($tempat as $tmpt) : ?>
-                                <div class="card m-5 bg-light text-dark" style="">
-                                    <div class="card-body ">
-                                        <h5 class="card-title text-center"><strong><?= $tmpt['nama_tempat']; ?></strong>
-                                        </h5>
-                                        <hr>
-                                        <p class="card-title mb-4 d-flex justify-content-center "><small>Alamat berada
-                                                di
-                                                <?= $tmpt['alamat_tempat']; ?><br>Untuk jurusan
-                                                <?= $tmpt['Jurusan']; ?></small></p>
-                                        <img src="<?= base_url().'/uploads/' .$tmpt['gambar'];?>"
-                                            class="w-75 ms-3 rounded">
-                                        <a href="<?= base_url('Beranda/edit/'). $tmpt['id_tempat']; ?>"
-                                            class="btn btn-outline-primary mt-4">Edit</a>
-                                        <a href="<?= base_url('Beranda/hapus/'). $tmpt['id_tempat']; ?>"
-                                            class="btn btn-danger mt-4">Hapus</a>
-                                    </div>
-
-                                </div>
-
-                                <?php endforeach; ?>
-                            </ul>
-                        </div>
-                    </div>
                 </div>
 
                 <div class="col-lg-8">
                     <div class="card mb-4">
-                        <div class="card-body">
+                        <div class="card-body ">
                             <?php if (!empty($profiles)): ?>
                             <div class="row">
                                 <p hidden name="user_id"><?= $profiles['user_id']?></p>
@@ -165,81 +135,37 @@
                         </div>
                     </div>
                     <?php endif; ?>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="card mb-4 mb-md-0">
-                                <div class="card-body">
-                                    <p class="mb-4 text-center"><span
-                                            class="text-primary font-italic me-1">Approve</span> Peserta
-                                    </p>
-                                    <hr class="dark">
-                                    <!-- Begin Page Content -->
-                                    <div class="container-fluid">
-                                        <div class="card-body">
-                                            <div class="grid">
-                                                <div class="col-md-12">
-                                                    <div class="hero-callout">
-                                                        <table></table>
-                                                        <div id="example_wrapper" class="dataTables_wrapper">
-                                                            <table id="example"
-                                                                class="display nowrap dataTable dtr-inline collapsed"
-                                                                style="width: 100%;" aria-describedby="example_info">
-                                                                <thead>
-                                                                    <tr>
-                                                                        <th class="sorting sorting_asc" tabindex="0"
-                                                                            rowspan="1" colspan="1" style="width: 90px;"
-                                                                            aria-sort="ascending"
-                                                                            aria-label="Name: activate to sort column descending">
-                                                                            No</th>
-                                                                        <th class="sorting" tabindex="0" rowspan="1"
-                                                                            colspan="1" style="width: 100px;"
-                                                                            aria-label="Position: activate to sort column ascending">
-                                                                            Data Peserta</th>
-                                                                        <th class="sorting" tabindex="0" rowspan="1"
-                                                                            colspan="1" style="width: 100px;"
-                                                                            aria-label="Office: activate to sort column ascending">
-                                                                            Tanggal Pengajuan</th>
-                                                                        <th class="dt-body-right sorting" tabindex="0"
-                                                                            rowspan="1" colspan="1"
-                                                                            style="width: 35px;">Status</th>
-                                                                    </tr>
-                                                                </thead>
-                                                                <tbody>
-                                                                    <?php 
-                                                            $no = 1;
-                                                            if (!empty($customer)) {
-                                                                // echo "Tidak ada data";
-                                                            // }else {
-                                                                foreach ($customer as $inv) : ?>
-                                                                    <tr>
-                                                                        <td><?= $no++; ?></td>
-                                                                        <td><?= $inv->nama_cutomer ?></td>
-                                                                        <td><?= date("D, d M Y" ,strtotime($inv->tgl_pesan)) ?>
-                                                                        </td>
-                                                                        <td><?= date("D, d M Y" ,strtotime($inv->batas_bayar)) ?>
-                                                                        </td>
-                                                                        <td>
-                                                                            <a class="btn btn-success"
-                                                                                href="<?php echo base_url() ?>Profile/hapus_data<?= $inv->id ?>">Hapus</a>
-                                                                            <a class="btn btn-success"
-                                                                                href="<?php echo base_url() ?>Profile/terima_data<?= $inv->id ?>">Terima</a>
-                                                                        </td>
-                                                                    </tr>
-                                                                    <?php endforeach; 
-                                    } 
-                                    ?>
-                                                                </tbody>
-                                                            </table>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card mb-4 mb-md-0">
+                        <div class="card-body p-0">
+                            <h4 class="d-flex justify-content-center m-3 "><strong>Postingan</strong></h4>
+                            <hr>
+                            <ul class="list-group list-group-flush rounded-3">
+                                <?php foreach ($tempat as $tmpt) : ?>
+                                <div class="card m-5 bg-light text-dark" style="">
+                                    <div class="card-body ">
+                                        <h5 class="card-title text-center"><strong><?= $tmpt['nama_tempat']; ?></strong>
+                                        </h5>
+                                        <hr>
+                                        <p class="card-title mb-4 d-flex justify-content-center "><small>Alamat berada
+                                                di
+                                                <?= $tmpt['alamat_tempat']; ?><br>Untuk jurusan
+                                                <?= $tmpt['Jurusan']; ?></small></p>
+                                        <img src="<?= base_url().'/uploads/' .$tmpt['gambar'];?>"
+                                            class="w-75 ms-3 rounded">
+                                        <a href="<?= base_url('Beranda/edit/'). $tmpt['id_tempat']; ?>"
+                                            class="btn btn-outline-primary mt-4">Edit</a>
+                                        <a href="<?= base_url('Beranda/hapus/'). $tmpt['id_tempat']; ?>"
+                                            class="btn btn-danger mt-4">Hapus</a>
                                     </div>
-                                    <!-- /.container-fluid -->
+
                                 </div>
-                                <!-- End of Main Content -->
-                            </div>
+
+                                <?php endforeach; ?>
+                            </ul>
+                        </div>
                         </div>
                     </div>
                 </div>
